@@ -26,8 +26,8 @@ const Root = styled.div`
     /* margin: 0 auto; */
     background-color: pink;
     min-height: calc(100vh - 80px);
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     overflow: hidden;
   }
   @media (min-width: 500px) {

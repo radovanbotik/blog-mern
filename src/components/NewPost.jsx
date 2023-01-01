@@ -36,15 +36,11 @@ export const NewPost = () => {
         <form>
           <fieldset className="user-inputs">
             <legend>
-              <h3>Create a new post</h3>
+              <h4>Create a new post</h4>
             </legend>
             <div className="input-panel">
-              <label htmlFor="fileinput">attachments</label>
-              <input type="file" id="fileinput" />
-            </div>
-            <div className="input-panel">
               <label htmlFor="title">
-                <h4>title</h4>
+                <h6>title</h6>
               </label>
               <input
                 type="text"
@@ -53,14 +49,23 @@ export const NewPost = () => {
                 autoFocus={true}
               />
             </div>
+            <div className="input-panel file-input">
+              <label htmlFor="fileinput">
+                <p className="footnote_ts">
+                  <span class="material-symbols-outlined">add_circle</span>
+                  Attach an image
+                </p>
+              </label>
+              <input type="file" id="fileinput" style={{ display: "none" }} />
+            </div>
           </fieldset>
           <fieldset className="user-story">
             <legend>
-              <h3>The story</h3>
+              <h4>The story</h4>
             </legend>
             <div className="input-panel">
               <label htmlFor="story">
-                <h4>story</h4>
+                <h6>story</h6>
               </label>
               <textarea
                 name=""
@@ -71,7 +76,9 @@ export const NewPost = () => {
               ></textarea>
             </div>
           </fieldset>
-          <button>publish</button>
+          <fieldset>
+            <button>publish</button>
+          </fieldset>
         </form>
       </div>
     </Wrapper>
@@ -81,37 +88,56 @@ export const NewPost = () => {
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin: 0 auto;
   display: grid;
-  place-content: center;
+  align-items: center;
+  /* justify-content: stretch; */
+  /* place-content: center; */
   .top-control {
     width: 100%;
-    background-color: tomato;
+    /* background-color: tomato; */
+    border-radius: 4px;
 
     form {
-      background-color: gold;
+      /* background-color: gold; */
+      border-radius: 2px;
+
       display: flex;
       flex-direction: column;
       gap: var(--vspace-3);
-      padding: var(--vspace-3);
+      padding: calc(var(--vspace-3) / 2);
       fieldset {
-        padding: calc(var(--vspace-3) / 2);
+        padding: calc(var(--vspace-3) / 2) 0;
         appearance: none;
-        border: 1px solid black;
-        border-radius: 8px;
+        border: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        /* border-radius: 8px; */
         display: flex;
         flex-direction: column;
         gap: var(--vspace-3);
         legend {
-          h3 {
-            margin-left: 1ex;
+          h4 {
+            /* margin-left: 1ex; */
             margin-right: 2ex;
+            /* padding-bottom: var(--vspace-2); */
           }
         }
         .input-panel {
           display: flex;
           flex-direction: column;
+
+          label {
+            cursor: pointer;
+            p {
+              display: flex;
+              align-items: center;
+              gap: 0.75ex;
+              span {
+                font-size: inherit;
+              }
+            }
+          }
           input {
             border-radius: 4px;
             border: 0;
@@ -125,10 +151,18 @@ const Wrapper = styled.div`
             min-height: 200px;
           }
         }
+        .input-panel.file-input {
+          align-self: flex-end;
+          justify-self: flex-end;
+        }
+      }
+      fieldset:last-child {
+        border: 0;
       }
       button {
         /* align-self: flex-end; */
         height: var(--size-700);
+
         /* width: var(--vspace-0); */
       }
     }

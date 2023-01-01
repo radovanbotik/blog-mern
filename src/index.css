@@ -231,6 +231,19 @@ img {
   /* filter: grayscale(100%); */
 }
 
+input,
+textarea {
+  appearance: none;
+  font-family: var(--ibm-plex);
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: inherit;
+  font-family: inherit;
+  text-transform: capitalize;
+}
+
 ul {
   list-style: none;
 }
