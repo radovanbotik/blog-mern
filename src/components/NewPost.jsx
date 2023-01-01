@@ -83,11 +83,10 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+  display: grid;
+  place-content: center;
   .top-control {
-    height: 100%;
     width: 100%;
-    /* display: grid;
-    place-content: center; */
     background-color: tomato;
 
     form {
