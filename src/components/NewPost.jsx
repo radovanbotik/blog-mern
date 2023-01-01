@@ -36,11 +36,11 @@ export const NewPost = () => {
         <form>
           <fieldset className="user-inputs">
             <legend>
-              <h4>Create a new post</h4>
+              <h3>Create a new post</h3>
             </legend>
             <div className="input-panel">
               <label htmlFor="title">
-                <h6>title</h6>
+                <h6 className="endnote_ts">title</h6>
               </label>
               <input
                 type="text"
@@ -65,7 +65,7 @@ export const NewPost = () => {
             </legend>
             <div className="input-panel">
               <label htmlFor="story">
-                <h6>story</h6>
+                <h6 className="endnote_ts">story</h6>
               </label>
               <textarea
                 name=""
@@ -108,7 +108,7 @@ const Wrapper = styled.div`
       gap: var(--vspace-3);
       padding: calc(var(--vspace-3) / 2);
       fieldset {
-        padding: calc(var(--vspace-3) / 2) 0;
+        padding: calc(var(--vspace-3)) 0;
         appearance: none;
         border: 0;
         border-top: 1px solid rgba(0, 0, 0, 0.1);
