@@ -117,10 +117,12 @@ const Wrapper = styled.div`
         flex-direction: column;
         gap: var(--vspace-3);
         legend {
+          h3,
           h4 {
-            /* margin-left: 1ex; */
             margin-right: 2ex;
-            /* padding-bottom: var(--vspace-2); */
+          }
+          h4 {
+            font-weight: 400;
           }
         }
         .input-panel {
