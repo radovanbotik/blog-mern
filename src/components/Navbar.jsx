@@ -1,33 +1,39 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
     <Wrapper>
       <div className="top-control">
-        <div className="logo">
+        <Link to="/" className="logo">
           <h1 className="h1-bold">blog</h1>
-        </div>
+        </Link>
         <ul className="horizontal">
           <li>
-            <a href="/">home</a>
-            <span className="material-symbols-outlined">home</span>
+            <Link to="/">
+              <span>home</span>
+              <span className="material-symbols-outlined">home</span>
+            </Link>
           </li>
           <li>
-            <a href="/">about</a>
-            <span className="material-symbols-outlined">groups</span>
+            <Link to="/user">
+              <span>profile</span>
+              <span className="material-symbols-outlined">groups</span>
+            </Link>
           </li>
-          {/* <li>
-            <a href="/">contact</a>
-            <span className="material-symbols-outlined">info</span>
-          </li> */}
+
           <li>
-            <a href="/">write</a>
-            <span className="material-symbols-outlined">edit_note</span>
+            <Link to="/create-post">
+              <span>write</span>
+              <span className="material-symbols-outlined">edit_note</span>
+            </Link>
           </li>
           <li>
-            <a href="/">login</a>
-            <span className="material-symbols-outlined">login</span>
+            <button>
+              <span>log out</span>
+              <span className="material-symbols-outlined">login</span>
+            </button>
           </li>
         </ul>
       </div>
@@ -70,14 +76,14 @@ const Wrapper = styled.nav`
       /* flex-direction: column; */
       gap: 2.5ex;
       li {
-        grid-column: span 1;
         justify-content: flex-end;
-        a {
+        a,
+        button {
+          border: 0;
           font-weight: 400;
           font-size: var(--size-100);
           text-transform: uppercase;
         }
-        /* padding-right: 1ex; */
       }
     }
   }

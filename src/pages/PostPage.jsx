@@ -22,6 +22,7 @@ const Page = styled.section`
 
   & > * {
     padding: var(--vspace-3);
+    margin-top: var(--vspace-1);
   }
   .layout {
     height: 100%;

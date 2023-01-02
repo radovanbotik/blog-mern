@@ -36,35 +36,27 @@ export const NewPost = () => {
       <div className="top-control">
         <form>
           <fieldset className="user-inputs">
-            <legend>
-              <h3>Create a new post</h3>
-            </legend>
-            <div className="input-panel">
-              <label htmlFor="title">
-                <h6 className="endnote_ts">title</h6>
-              </label>
+            <legend>Create a new post</legend>
+            <div className="panel">
+              <label htmlFor="title">title</label>
               <input
                 type="text"
                 id="title"
                 placeholder="title"
-                autoFocus={true}
+                // autoFocus={true}
               />
             </div>
-            <div className="input-panel file-input">
-              <label htmlFor="fileinput">
-                <p className="footnote_ts">
-                  <span class="material-symbols-outlined">add_circle</span>
-                  Attach an image
-                </p>
+            <div className="panel file-input">
+              <label htmlFor="fileinput" className="footnote_ts">
+                <span>Attach an image</span>
+                <span class="material-symbols-outlined">add_circle</span>
               </label>
               <input type="file" id="fileinput" style={{ display: "none" }} />
             </div>
           </fieldset>
           <fieldset className="user-story">
-            <legend>
-              <h4>The story</h4>
-            </legend>
-            <div className="input-panel">
+            <legend>The story</legend>
+            <div className="panel">
               <label htmlFor="story">
                 <h6 className="endnote_ts">story</h6>
               </label>
@@ -92,86 +84,21 @@ export const NewPost = () => {
 const Wrapper = styled.div`
   height: 100%;
   width: 100%;
-  /* max-width: 800px; */
   margin: 0 auto;
   display: grid;
   align-items: center;
-  /* justify-content: stretch; */
-  /* place-content: center; */
   .top-control {
     width: 100%;
-    /* background-color: tomato; */
-    border-radius: 4px;
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--vspace-2);
     form {
-      /* background-color: gold; */
       order: 2;
-      border-radius: 2px;
-      display: flex;
-      flex-direction: column;
-      gap: var(--vspace-3);
-      padding: calc(var(--vspace-3) / 2);
       fieldset {
-        padding: calc(var(--vspace-3)) 0;
-        appearance: none;
-        border: 0;
-        border-top: 1px solid rgba(0, 0, 0, 0.1);
-        /* border-radius: 8px; */
-        display: flex;
-        flex-direction: column;
-        gap: var(--vspace-3);
-        legend {
-          h3,
-          h4 {
-            margin-right: 2ex;
-          }
-          h4 {
-            font-weight: 400;
-          }
-        }
-        .input-panel {
-          display: flex;
-          flex-direction: column;
-
-          label {
-            cursor: pointer;
-            p {
-              display: flex;
-              align-items: center;
-              gap: 0.75ex;
-              span {
-                font-size: inherit;
-              }
-            }
-          }
-          input {
-            border-radius: 4px;
-            border: 0;
-            height: var(--size-700);
-            text-indent: 0.5ex;
-          }
-          textarea {
-            border-radius: 4px;
-            border: 0;
-            text-indent: 0.5ex;
-            min-height: 200px;
-          }
-        }
-        .input-panel.file-input {
+        .panel.file-input {
           align-self: flex-end;
           justify-self: flex-end;
         }
-      }
-      fieldset:last-child {
-        border: 0;
-      }
-      button {
-        /* align-self: flex-end; */
-        height: var(--size-700);
-
-        /* width: var(--vspace-0); */
       }
     }
     .image-preview {

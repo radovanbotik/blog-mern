@@ -35,7 +35,7 @@ export const Posts = () => {
 };
 const Wrapper = styled.div`
   width: inherit;
-  background-color: #9d3d4d;
+  /* background-color: #9d3d4d; */
   .top-control {
     height: 100%;
     display: flex;
@@ -43,6 +43,6 @@ const Wrapper = styled.div`
     /* display: grid;
     grid-template-columns: repeat(2, 5vw 1fr 0.5fr); */
     justify-content: stretch;
-    gap: var(--vspace-3);
+    gap: var(--vspace-1);
   }
 `;

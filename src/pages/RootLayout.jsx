@@ -20,14 +20,17 @@ const Root = styled.div`
 
   & > * {
     grid-column: 2/3;
+    margin-top: var(--vspace-2);
   }
   .outlet {
     /* max-width: calc(25 * var(--vspace-1)); */
     /* margin: 0 auto; */
-    background-color: pink;
+    /* background-color: pink; */
     min-height: calc(100vh - 80px);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    min-height: calc(100vh - 165px);
+
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     overflow: hidden;
   }
   @media (min-width: 500px) {

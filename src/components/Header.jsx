@@ -36,6 +36,9 @@ const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       gap: var(--vspace-3);
+      h3 {
+        /* transform: translateY(25px); */
+      }
     }
     .image {
       height: 300px;

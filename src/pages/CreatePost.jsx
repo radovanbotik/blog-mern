@@ -14,5 +14,6 @@ const Page = styled.section`
   height: 100%;
   & > * {
     padding: var(--vspace-3);
+    margin-top: var(--vspace-1);
   }
 `;

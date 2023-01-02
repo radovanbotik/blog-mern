@@ -54,12 +54,14 @@ export const Sidebar = () => {
 };
 const Wrapper = styled.div`
   width: inherit;
-  background-color: #dba6af;
+  /* background-color: #dba6af; */
   .top-control {
     height: 100%;
+    display: grid;
+    place-content: center;
+    align-content: flex-start;
     .post {
       height: 100%;
-
       padding: var(--vspace-3);
       background-color: #acdba6;
 
