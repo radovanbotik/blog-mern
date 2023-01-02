@@ -62,7 +62,7 @@
 }
 
 html {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 body {
@@ -78,7 +78,7 @@ body {
 }
 
 section {
-  background-color: rgb(200, 194, 201);
+  /* background-color: rgb(200, 194, 201); */
 }
 
 p {
@@ -105,6 +105,8 @@ h2 {
 .h2-bold {
   font-family: var(--outfit);
   font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: var(--vspace-3);
 }
 
 h3 {
@@ -208,6 +210,7 @@ sup {
 button {
   font-family: var(--outfit);
   font-weight: 500;
+  cursor: pointer;
 }
 
 a {
@@ -240,13 +243,6 @@ input,
 textarea {
   appearance: none;
   font-family: var(--ibm-plex);
-}
-
-input::placeholder,
-textarea::placeholder {
-  font-size: inherit;
-  font-family: inherit;
-  text-transform: capitalize;
 }
 
 ul {
@@ -283,7 +279,6 @@ form {
   /* background-color: gold; */
   display: flex;
   flex-direction: column;
-  gap: var(--vspace-3);
   padding: calc(var(--vspace-3) / 2);
 }
 fieldset {
@@ -297,9 +292,11 @@ fieldset {
   gap: var(--vspace-3);
 }
 fieldset button {
-  height: var(--size-700);
+  height: 40px;
   min-width: 300px;
-  align-self: flex-start;
+  background-color: var(--black-main);
+  color: var(--white-main);
+  /* align-self: flex-start; */
 }
 fieldset legend {
   font-size: inherit;
@@ -342,19 +339,23 @@ fieldset .panel label {
   display: flex;
   align-items: center;
   gap: 0.75ex;
+  text-transform: capitalize;
+  /* margin: 8px 0px 12px; */
 }
 fieldset .panel input {
   min-width: 300px;
-  border-radius: 4px;
-  border: 0;
-  height: var(--size-700);
+  border-radius: 8px;
+  border: 1px solid black;
+  height: 38px;
   text-indent: 0.5ex;
+  margin: 8px 0px;
 }
 fieldset .panel textarea {
   border-radius: 4px;
   border: 0;
   text-indent: 0.5ex;
   min-height: 200px;
+  margin: 8px 0px;
 }
 fieldset:last-child {
   border: 0;
