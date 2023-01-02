@@ -6,7 +6,11 @@ export const PostPage = () => {
   return (
     <Page>
       <div className="layout">
-        <FullPost />
+        <div className="posts">
+          <FullPost />
+          <FullPost />
+          <FullPost />
+        </div>
         <Sidebar />
       </div>
     </Page>
@@ -23,17 +27,25 @@ const Page = styled.section`
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    & > * {
+
+    /* & > * {
       min-width: 300px;
-    }
+    } */
     .sidebar {
       flex: 1;
-      min-width: 300px;
+      max-width: 350px;
       align-self: flex-start;
     }
     .posts {
-      flex: 4;
+      flex: 1;
+      /* width: min(100%, 70ch); */
+    }
+  }
+  @media (min-width: 1200px) {
+    .layout {
+      flex-direction: row;
     }
   }
 `;

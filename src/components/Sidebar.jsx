@@ -8,9 +8,7 @@ export const Sidebar = () => {
       <div className="top-control">
         <div className="post">
           <div className="about">
-            <div className="image-control">
-              <img src={me} alt="" />
-            </div>
+            <div className="image-control">{/* <img src={me} alt="" /> */}</div>
             <h4>about me</h4>
             <p className="introduction">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam cum
@@ -68,7 +66,10 @@ const Wrapper = styled.div`
       .about {
         width: 100%;
         .image-control {
-          height: 128px;
+          /* height: 128px; */
+          img {
+            max-height: 156px;
+          }
         }
         h4 {
           margin-top: var(--vspace-3);

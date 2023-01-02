@@ -16,12 +16,16 @@ export const Posts = () => {
 
   const displayPosts =
     onlyWidth < 1200
-      ? postsList.slice(0, 1).map(entry => {
+      ? postsList.slice(0, 2).map(entry => {
           return <Post key={entry.id} />;
         })
-      : postsList.slice(0, 2).map(entry => {
+      : postsList.slice(0, 4).map(entry => {
           return <Post key={entry.id} />;
         });
+
+  // const displayPosts = postsList.slice(0, 4).map(entry => {
+  //   return <Post key={entry.id} />;
+  // });
 
   return (
     <Wrapper className="posts">
@@ -31,14 +35,13 @@ export const Posts = () => {
 };
 const Wrapper = styled.div`
   width: inherit;
-  /* background-color: #9d3d4d; */
+  background-color: #9d3d4d;
   .top-control {
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    /* flex-direction: column; */
     /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    grid-template-columns: repeat(2, 5vw 1fr 0.5fr); */
     justify-content: stretch;
     gap: var(--vspace-3);
   }

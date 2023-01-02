@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useLayoutEffect, useState } from "react";
+import me from "../assets/me.jpg";
 
 export const NewPost = () => {
   const [textArea, setTextArea] = useState("");
@@ -80,6 +81,9 @@ export const NewPost = () => {
             <button>publish</button>
           </fieldset>
         </form>
+        <div className="image-preview">
+          <img src={me} alt="" />
+        </div>
       </div>
     </Wrapper>
   );
@@ -98,11 +102,13 @@ const Wrapper = styled.div`
     width: 100%;
     /* background-color: tomato; */
     border-radius: 4px;
-
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--vspace-2);
     form {
       /* background-color: gold; */
+      order: 2;
       border-radius: 2px;
-
       display: flex;
       flex-direction: column;
       gap: var(--vspace-3);
@@ -166,6 +172,21 @@ const Wrapper = styled.div`
         height: var(--size-700);
 
         /* width: var(--vspace-0); */
+      }
+    }
+    .image-preview {
+      max-height: 600px;
+      order: 1;
+    }
+  }
+  @media (min-width: 900px) {
+    .top-control {
+      grid-template-columns: auto min(100%, 70ch);
+      form {
+        order: 2;
+      }
+      .image-preview {
+        order: 1;
       }
     }
   }
