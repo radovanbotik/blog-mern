@@ -54,6 +54,7 @@ export const Sidebar = () => {
 };
 const Wrapper = styled.div`
   width: inherit;
+  max-width: 420px;
   /* background-color: #dba6af; */
   .top-control {
     height: 100%;

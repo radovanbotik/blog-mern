@@ -1,13 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import me from "../assets/me.jpg";
+import { PostAvatar } from "../assets/svgs";
 
 export const Post = () => {
   return (
     <Wrapper>
       <div className="top-control">
         <div className="image-control">
-          <img src={me} alt="" />
+          <PostAvatar />
+          {/* <img src={me} alt="" /> */}
         </div>
         <div className="details">
           <div className="panel category">
@@ -52,6 +54,11 @@ const Wrapper = styled.div`
       width: 100%;
       flex: 1;
       max-height: 200px;
+      svg {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
       /* height: 128px; */
     }
     .details {

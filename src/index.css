@@ -111,6 +111,7 @@ h2 {
 
 h3 {
   line-height: 1em;
+  margin-bottom: 8px;
 }
 
 h4,
@@ -126,6 +127,7 @@ h1 {
   word-break: break-word;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  margin-bottom: var(--vspace-3);
 }
 
 .title,
@@ -211,6 +213,23 @@ button {
   font-family: var(--outfit);
   font-weight: 500;
   cursor: pointer;
+  text-transform: capitalize;
+  font-size: var(--size-200);
+  height: 40px;
+  letter-spacing: 0.0085em;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  background-color: var(--black-main);
+  color: var(--white-main);
+  padding: 0 1.5rem;
+}
+button.dark {
+  background-color: var(--black-main);
+  color: var(--white-main);
+}
+button.light {
+  background-color: var(--white-main);
+  color: var(--black-main);
 }
 
 a {
@@ -316,19 +335,29 @@ fieldset.user-picture .panel {
   align-items: baseline;
   gap: 2ex;
 }
-fieldset.user-picture .panel .image-control {
+fieldset.user-picture .panel .image-control svg {
   height: 96px;
   width: 96px;
   border-radius: 4px;
   clip-path: circle();
   overflow: hidden;
-  /* margin-right: auto; */
+}
+fieldset.user-picture .panel .image-control img {
+  height: 96px;
+  width: 96px;
+  border-radius: 4px;
+  clip-path: circle();
+  overflow: hidden;
 }
 fieldset.user-picture .panel label {
   display: flex;
   align-items: center;
   gap: 1ex;
   transform: translateY(-2px);
+}
+fieldset .panel.file-input {
+  align-self: flex-end;
+  justify-self: flex-end;
 }
 fieldset .panel {
   display: flex;
@@ -351,13 +380,29 @@ fieldset .panel input {
   margin: 8px 0px;
 }
 fieldset .panel textarea {
-  border-radius: 4px;
-  border: 0;
+  border-radius: 8px;
+  border: 1px solid black;
   text-indent: 0.5ex;
-  min-height: 200px;
+  min-height: 100px;
   margin: 8px 0px;
 }
 fieldset:last-child {
   border: 0;
   margin: 0;
+}
+article.scene-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+div.button-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--vspace-3);
+}
+button.light {
+  display: none;
 }

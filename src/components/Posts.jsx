@@ -19,7 +19,11 @@ export const Posts = () => {
       ? postsList.slice(0, 2).map(entry => {
           return <Post key={entry.id} />;
         })
-      : postsList.slice(0, 4).map(entry => {
+      : onlyWidth > 1600
+      ? postsList.slice(0).map(entry => {
+          return <Post key={entry.id} />;
+        })
+      : postsList.slice(0, 3).map(entry => {
           return <Post key={entry.id} />;
         });
 
@@ -38,11 +42,11 @@ const Wrapper = styled.div`
   /* background-color: #9d3d4d; */
   .top-control {
     height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    /* display: grid;
-    grid-template-columns: repeat(2, 5vw 1fr 0.5fr); */
-    justify-content: stretch;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: stretch; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: var(--vspace-1);
   }
 `;

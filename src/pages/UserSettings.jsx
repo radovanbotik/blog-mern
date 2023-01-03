@@ -1,20 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import me from "../assets/me.jpg";
+import { ProfileDetails } from "../assets/svgs";
+import { ProfileAvatar } from "../assets/svgs";
 
 export const UserSettings = () => {
   return (
     <Page>
-      <div className="settings">
+      {/* <h2 className="h2-bold">Account settings</h2> */}
+      <div className="row graphic">
         <div className="top-control">
-          <h3>Account settings</h3>
+          <h2 className="h2-bold">Account settings</h2>
+          <ProfileDetails />
+        </div>
+      </div>
+      <div className="row form">
+        <div className="top-control">
           <form>
-            <h3>basic info</h3>
+            <h2 className="h2-bold">basic info</h2>
             <fieldset className="user-picture">
               <legend>profile picture</legend>
               <div className="panel">
                 <div className="image-control">
-                  <img src={me} alt="" />
+                  {/* <img src={me} alt="" /> */}
+                  <ProfileAvatar />
                 </div>
                 <label htmlFor="profilePicture">
                   <span className="material-symbols-outlined">image</span>
@@ -33,23 +42,19 @@ export const UserSettings = () => {
                 <label htmlFor="user_name">
                   <span> your username</span>
                 </label>
-                <input type="text" id="user_name" placeholder="username" />
+                <input type="text" id="user_name" />
               </div>
               <div className="panel">
                 <label htmlFor="user_email">
                   <span>your email</span>
                 </label>
-                <input type="email" id="user_email" placeholder="email" />
+                <input type="email" id="user_email" />
               </div>
               <div className="panel">
                 <label htmlFor="user_password">
                   <span>your password</span>
                 </label>
-                <input
-                  type="password"
-                  id="user_password"
-                  placeholder="*******"
-                />
+                <input type="password" id="user_password" />
               </div>
             </fieldset>
             <fieldset>
@@ -63,42 +68,88 @@ export const UserSettings = () => {
   );
 };
 
+// const Page = styled.section`
+//   & > * {
+//     padding: var(--vspace-3);
+//     margin-top: var(--vspace-1);
+//   }
+//   display: grid;
+//   grid-template-columns: min(100%, 70ch) auto;
+//   .settings {
+//     .top-control {
+//       display: flex;
+//       flex-direction: column;
+//       gap: var(--vspace-2);
+
+//       form {
+//         fieldset.user-picture {
+//           .panel {
+//             .image-control {
+//               height: 96px;
+//               width: 96px;
+//               border-radius: 4px;
+//               clip-path: circle();
+//               overflow: hidden;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 const Page = styled.section`
   & > * {
-    padding: var(--vspace-3);
-    margin-top: var(--vspace-1);
+    padding: var(--vspace-3) 0;
+    margin: 0;
   }
-  display: grid;
-  grid-template-columns: min(100%, 70ch) auto;
-  .settings {
-    .top-control {
-      display: flex;
-      flex-direction: column;
-      gap: var(--vspace-2);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .row {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-      form {
-        fieldset.user-picture {
-          .panel {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: baseline;
-            gap: 2ex;
-            .image-control {
-              height: 96px;
-              width: 96px;
-              border-radius: 4px;
-              clip-path: circle();
-              overflow: hidden;
-              /* margin-right: auto; */
-            }
-            label {
-              display: flex;
-              align-items: center;
-              gap: 1ex;
-              transform: translateY(-2px);
-            }
-          }
+    &.graphic {
+      .top-control {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+        h2 {
+          white-space: nowrap;
+        }
+      }
+      svg {
+        height: 100px;
+        width: 100%;
+      }
+    }
+    &.form {
+      & > * {
+        width: 100%;
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    .row {
+      &.graphic {
+        .top-control {
+          flex-wrap: nowrap;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--vspace-2);
+        }
+        svg {
+          max-height: 600px;
+          height: 600px;
         }
       }
     }

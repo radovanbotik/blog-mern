@@ -7,7 +7,7 @@ export const Navbar = () => {
     <Wrapper>
       <div className="top-control">
         <Link to="/" className="logo">
-          <h1 className="h1-bold">blog</h1>
+          <h2 className="h2-bold">blog</h2>
         </Link>
         <ul className="horizontal">
           <li>
@@ -29,12 +29,12 @@ export const Navbar = () => {
               <span className="material-symbols-outlined">edit_note</span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <button>
               <span>log out</span>
               <span className="material-symbols-outlined">login</span>
             </button>
-          </li>
+          </li> */}
         </ul>
       </div>
     </Wrapper>
@@ -44,7 +44,8 @@ export const Navbar = () => {
 const Wrapper = styled.nav`
   min-height: 80px;
   width: 100%;
-  padding: 1em 1em 0.5em;
+  /* padding: 1em 1em 0.5em; */
+  padding: 0em 1em;
   position: sticky;
   top: 0;
   background-color: var(--white-main);
@@ -74,6 +75,7 @@ const Wrapper = styled.nav`
       //column by default
       //break at 600px
       /* flex-direction: column; */
+      align-items: center;
       gap: 2.5ex;
       li {
         justify-content: flex-end;
@@ -83,6 +85,7 @@ const Wrapper = styled.nav`
           font-weight: 400;
           font-size: var(--size-100);
           text-transform: uppercase;
+          /* height: inherit; */
         }
       }
     }

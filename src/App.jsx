@@ -14,7 +14,7 @@ import {
   Register,
 } from "./pages";
 
-const user = false;
+const user = true;
 
 const router = createBrowserRouter(
   createRoutesFromElements(
