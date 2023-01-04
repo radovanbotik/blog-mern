@@ -7,7 +7,7 @@ export const Navbar = () => {
     <Wrapper>
       <div className="top-control">
         <Link to="/" className="logo">
-          <h2 className="h2-bold">blog</h2>
+          <h3 className="h2-bold">blog</h3>
         </Link>
         <ul className="horizontal">
           <li>
@@ -46,35 +46,29 @@ const Wrapper = styled.nav`
   width: 100%;
   /* padding: 1em 1em 0.5em; */
   padding: 0em 1em;
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   background-color: var(--white-main);
-  //to place control on the bottom
   display: flex;
   flex-wrap: wrap;
   .top-control {
-    //align-self trims div, flex 1 makes it take full width
     flex: 1;
     align-self: flex-end;
-    //to align logo and links
-    display: flex;
     flex-wrap: wrap;
-    //column by default
-    //break at 600px
-    /* flex-direction: column; */
     gap: var(--vspace-3);
     align-items: baseline;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     .logo {
-      h1 {
-        word-break: keep-all;
-        font-size: var(--size-500);
-      }
+      /* display: inline-block; */
+      display: block;
+      height: 100%;
     }
     ul.horizontal {
+      float: left;
       //column by default
       //break at 600px
       /* flex-direction: column; */
+      /* margin-right: 2ex; */
       align-items: center;
       gap: 2.5ex;
       li {
@@ -100,6 +94,7 @@ const Wrapper = styled.nav`
       }
       ul.horizontal {
         flex-direction: row;
+        float: right;
       }
     }
   }

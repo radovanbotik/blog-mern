@@ -15,21 +15,13 @@ export const RootLayout = () => {
 };
 
 const Root = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-
+  /* max-width: calc(25 * var(--vspace-0));
+  margin: 0 auto; */
   .outlet {
-    min-height: calc(100vh - 80px);
-    /* min-height: calc(100vh - 165px); */
+    width: 100%;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    /* overflow: hidden; */
-  }
-  @media (min-width: 600px) {
-    grid-template-columns: calc(var(--vspace-1)) 1fr calc(var(--vspace-1));
-    & > * {
-      grid-column: 2/3;
-      /* margin-top: var(--vspace-2); */
-    }
+    display: grid;
+    align-content: center;
   }
 `;

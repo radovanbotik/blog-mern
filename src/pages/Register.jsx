@@ -5,110 +5,51 @@ import { Link } from "react-router-dom";
 
 export const Register = () => {
   return (
-    <Page>
-      <div className="row graphic">
-        <div className="top-control">
-          <Welcoming />
+    <Page className="section-layout reverse">
+      <div className="wrap">
+        <div className="row graphic">
+          <div className="top-control">
+            <Welcoming />
+          </div>
         </div>
-      </div>
-      <div className="row form">
-        <div className="top-control">
-          <form>
-            <h2 className="h2-bold">sign up</h2>
-            {/* <p>
+        <div className="row form">
+          <div className="top-control">
+            <form>
+              <h2 className="h2-bold">Sign up</h2>
+              {/* <p>
               Need a Blog account? <span>Sign Up</span>
             </p> */}
-            <p>
-              Sign up to discover thousands of articles on Blog. Read articles
-              and write custom stories in seconds. Try Blog for free today!
-            </p>
-            <fieldset>
-              <div className="panel">
-                <label htmlFor="username">username</label>
-                <input type="text" id="username" />
-              </div>
-              <div className="panel">
-                <label htmlFor="email">email</label>
-                <input type="email" id="email" />
-              </div>
-              <div className="panel">
-                <label htmlFor="password">password</label>
-                <input type="password" id="password" />
-              </div>
-            </fieldset>
-            <fieldset>
-              <button className="user-submit">Create an Account</button>
-              <div>
-                <span className="footnote_ts">Member already? </span>
-                <Link className="footnote_ts">Sign in.</Link>
-              </div>
-            </fieldset>
-          </form>
+              <p>
+                Sign up to discover thousands of articles on Blog. Read articles
+                and write custom stories in seconds. Try Blog for free today!
+              </p>
+              <fieldset>
+                <div className="panel">
+                  <label htmlFor="username">username</label>
+                  <input type="text" id="username" />
+                </div>
+                <div className="panel">
+                  <label htmlFor="email">email</label>
+                  <input type="email" id="email" />
+                </div>
+                <div className="panel">
+                  <label htmlFor="password">password</label>
+                  <input type="password" id="password" />
+                </div>
+              </fieldset>
+              <fieldset>
+                <button className="user-submit">Create an Account</button>
+                <div>
+                  <span className="footnote_ts">Member already? </span>
+                  <Link className="footnote_ts">Sign in.</Link>
+                </div>
+              </fieldset>
+            </form>
+          </div>
         </div>
       </div>
     </Page>
   );
 };
 
-const Page = styled.section`
-  & > * {
-    padding: var(--vspace-3) 0;
-    margin: 0;
-  }
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  .row {
-    flex: 1;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    &.graphic {
-      .top-control {
-        display: flex;
-        flex-direction: row-reverse;
-        align-items: flex-start;
-        justify-content: center;
-        flex-wrap: wrap;
-        h2 {
-          white-space: nowrap;
-        }
-      }
-      svg {
-        height: 100px;
-        width: 100%;
-      }
-    }
-    &.form {
-      & > * {
-        width: 100%;
-      }
-    }
-  }
-  @media (min-width: 1200px) {
-    flex-direction: row;
-    /* gap: var(--vspace-1); */
-    justify-content: space-evenly;
-    .row {
-      &.graphic {
-        .top-control {
-          flex-wrap: nowrap;
-          flex-direction: column;
-          align-items: center;
-          gap: var(--vspace-2);
-          svg {
-            max-height: 600px;
-            height: 600px;
-          }
-        }
-      }
-      &.form {
-        justify-content: flex-start;
-      }
-    }
-  }
-`;
+const Page = styled.section``;
