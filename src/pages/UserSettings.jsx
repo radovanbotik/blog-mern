@@ -6,8 +6,9 @@ import { ProfileAvatar } from "../assets/svgs";
 export const UserSettings = () => {
   return (
     <Page className="section-layout">
-      <h2 className="h2-bold section-title">Account settings</h2>
+      {/* <h2 className="h2-bold section-title">Account settings</h2> */}
       <div className="wrap">
+        <h2 className="h2-bold section-title">Account settings</h2>
         <div className="row graphic">
           <div className="top-control">
             {/* <h2 className="h2-bold">Account settings</h2> */}
@@ -69,4 +70,8 @@ export const UserSettings = () => {
   );
 };
 
-const Page = styled.section``;
+const Page = styled.section`
+  .blob {
+    position: absolute;
+  }
+`;

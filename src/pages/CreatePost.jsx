@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useLayoutEffect, useState } from "react";
 import { ImageUpload } from "../assets/svgs";
+import { Blob } from "../assets/svgs";
 
 export const CreatePost = () => {
   const [textArea, setTextArea] = useState("");
@@ -33,19 +34,22 @@ export const CreatePost = () => {
 
   return (
     <Page className="section-layout">
-      <h2 className="h2-bold section-title">Speak your mind</h2>
+      {/* <h2 className="h2-bold section-title">Speak your mind</h2> */}
       <div className="wrap">
+        <h2 className="h2-bold section-title">Speak your mind.</h2>
         <div className="row graphic">
           <div className="top-control">
-            {/* <h2 className="h2-bold">Speak your mind.</h2> */}
             <ImageUpload />
+            {/* <div className="blob blob1">
+              <Blob />
+            </div> */}
           </div>
         </div>
         <div className="row form">
           <div className="top-control">
             <form>
               {/* <h2 className="h2-bold">Speak your mind.</h2> */}
-              <h2 className="h2-bold">Let the world know.</h2>
+              <h2 className="h2-bold">Let the world know</h2>
 
               <p>
                 Join the community of active writers.
@@ -91,6 +95,9 @@ export const CreatePost = () => {
                 <button>publish</button>
               </fieldset>
             </form>
+            {/* <div className="blob blob2">
+              <Blob />
+            </div> */}
           </div>
         </div>
       </div>
@@ -98,4 +105,21 @@ export const CreatePost = () => {
   );
 };
 
-const Page = styled.section``;
+const Page = styled.section`
+  /* background-color: gold; */
+
+  .blob {
+    position: absolute;
+    width: max(150px, 15%);
+  }
+  .blob1 {
+    top: max(120px, 18%);
+    /* left: min(200px, 20%); */
+    left: 50%;
+    transform: rotate(180deg);
+  }
+  .blob2 {
+    top: 0%;
+    right: 5%;
+  }
+`;

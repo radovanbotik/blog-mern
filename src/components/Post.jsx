@@ -5,14 +5,10 @@ import { PostAvatar } from "../assets/svgs";
 
 export const Post = () => {
   return (
-    <Wrapper>
-      <div className="top-control">
-        <div className="image-control">
-          <PostAvatar />
-          {/* <img src={me} alt="" /> */}
-        </div>
-        <div className="details">
-          <div className="panel category">
+    <PostThumb>
+      <PostAvatar />
+      {/* <img src={me} alt="" /> */}
+      {/* <div className="panel category">
             <ul className="horizontal">
               <li>
                 <p className="footnote_ts">lifestyle</p>
@@ -21,57 +17,63 @@ export const Post = () => {
                 <p className="footnote_ts">nature</p>
               </li>
             </ul>
-          </div>
-          <h4>This is a post.</h4>
-          <p className="footnote_ts">1.1.2023</p>
-          <p className="content">
+          </div> */}
+      <div className="post-details">
+        <div className="user-thumb">
+          <img src={me} alt="" />
+        </div>
+        <div className="post-info">
+          <h6 className="footnote_ts">Scene</h6>
+          <p className="user-name footnote_ts">by Radovan</p>
+        </div>
+      </div>
+      {/* <p className="footnote_ts">1.1.2023</p> */}
+      {/* <p className="content">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas ex
             architecto consequatur velit provident impedit necessitatibus
             similique temporibus amet pariatur!
-          </p>
-        </div>
-      </div>
-    </Wrapper>
+          </p> */}
+    </PostThumb>
   );
 };
 
-const Wrapper = styled.div`
-  flex: 1;
-  min-width: 300px;
-  /* height: 100%; */
-  /* max-width: 400px; */
-  .top-control {
-    /* aspect-ratio: 16/9; */
-    background-color: #ebecea;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+const PostThumb = styled.div`
+  max-height: 322px;
+  /* height: 322px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--vspace-3);
 
-    /* justify-content: flex-end; */
-    .image-control {
-      width: 100%;
-      flex: 1;
-      max-height: 200px;
-      svg {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+  svg {
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 100%;
+    width: 100%;
+  }
+  /* height: 128px; */
+
+  .post-details {
+    display: flex;
+    gap: var(--vspace-3);
+    .user-thumb {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      /* overflow: hidden; */
+      clip-path: circle();
+    }
+    .post-info {
+      p {
+        line-height: 1;
       }
-      /* height: 128px; */
     }
-    .details {
-      .content {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-      }
-    }
-    h5 {
-      margin-top: var(--vspace-3);
-    }
+  }
+  .content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   }
 `;

@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
+  const user = true;
+
   return (
     <Wrapper>
       <div className="top-control">
@@ -13,27 +15,27 @@ export const Navbar = () => {
           <li>
             <Link to="/">
               <span>home</span>
-              <span className="material-symbols-outlined">home</span>
+              <span className="material-symbols-outlined icon">home</span>
             </Link>
           </li>
           <li>
             <Link to="/user">
               <span>profile</span>
-              <span className="material-symbols-outlined">groups</span>
+              <span className="material-symbols-outlined icon">groups</span>
             </Link>
           </li>
 
           <li>
             <Link to="/create-post">
               <span>write</span>
-              <span className="material-symbols-outlined">edit_note</span>
+              <span className="material-symbols-outlined icon">edit_note</span>
             </Link>
           </li>
           {/* <li>
-            <button>
+            <a>
               <span>log out</span>
               <span className="material-symbols-outlined">login</span>
-            </button>
+            </a>
           </li> */}
         </ul>
       </div>
@@ -45,12 +47,13 @@ const Wrapper = styled.nav`
   min-height: 80px;
   width: 100%;
   /* padding: 1em 1em 0.5em; */
-  padding: 0em 1em;
+  /* padding: 0em 1em; */
   /* position: sticky; */
   top: 0;
-  background-color: var(--white-main);
+  /* background-color: var(--white-main); */
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: var(--vspace-2);
   .top-control {
     flex: 1;
     align-self: flex-end;
@@ -80,6 +83,16 @@ const Wrapper = styled.nav`
           font-size: var(--size-100);
           text-transform: uppercase;
           /* height: inherit; */
+        }
+      }
+      li:hover {
+        .icon {
+          font-variation-settings: "FILL" 1;
+        }
+      }
+      li:active {
+        .icon {
+          font-variation-settings: "FILL" 1, "wght" 300;
         }
       }
     }

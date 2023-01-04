@@ -82,7 +82,8 @@ body::-webkit-scrollbar {
 }
 
 p {
-  line-height: var(--vspace);
+  /* line-height: var(--vspace); */
+  line-height: 1.5;
 }
 h1,
 h2,
@@ -96,6 +97,7 @@ h1 {
   line-height: calc(3.2917 / var(--space) * var(--vspace));
   font-family: var(--ibm-plex);
   font-weight: 400;
+  max-width: 15ch;
 }
 
 .h1-bold {
@@ -126,7 +128,7 @@ h4,
 h5,
 h6 {
   line-height: var(--vspace);
-  margin-top: var(--vspace-3);
+  /* margin-top: var(--vspace-3); */
 }
 
 .bigtitle,
@@ -151,7 +153,7 @@ h3 {
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-top: var(--vspace-3);
+  /* margin-top: var(--vspace-3); */
 }
 
 blockquote {
@@ -166,7 +168,7 @@ h4 {
   text-transform: uppercase;
   font-family: var(--outfit);
   font-weight: 600;
-  margin-top: var(--vspace-3);
+  /* margin-top: var(--vspace-3); */
 }
 
 .subheading3,
@@ -175,6 +177,7 @@ h5 {
   text-transform: uppercase;
   /* letter-spacing: 0.15em; */
   font-family: var(--outfit);
+  margin-bottom: 8px;
   font-weight: 600;
 }
 
@@ -184,7 +187,7 @@ h6 {
   font-family: var(--outfit);
   font-weight: 600;
   text-transform: capitalize;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .caption_ts {
@@ -196,8 +199,9 @@ h6 {
 
 .endnote_ts {
   font-size: 0.8333em;
-  font-family: var(--ibm-plex);
+  /* font-family: var(--ibm-plex); */
   font-weight: 400;
+  text-transform: capitalize;
 }
 
 .footnote_ts {
@@ -205,6 +209,7 @@ h6 {
   font-size: 0.75em;
   /* border-top: 1px solid #ccc; */
   line-height: 2em;
+  /* line-height: 1; */
 }
 
 /* CUSTOM CLASS */ /* CUSTOM CLASS */ /* CUSTOM CLASS */ /* CUSTOM CLASS */ /* CUSTOM CLASS */
@@ -214,7 +219,7 @@ h6 {
   justify-content: center;
   align-items: center;
 }
-@media (min-width: 1000px) {
+@media (min-width: 1200px) {
   .center {
     text-align: left;
     justify-content: flex-start;
@@ -240,13 +245,17 @@ button {
   cursor: pointer;
   text-transform: capitalize;
   font-size: var(--size-200);
-  height: 40px;
+  height: 48px;
   letter-spacing: 0.0085em;
   border-radius: 0.25rem;
   border: 1px solid;
   background-color: var(--black-main);
   color: var(--white-main);
   padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1ex;
 }
 button.dark {
   background-color: var(--black-main);
@@ -314,14 +323,21 @@ ul.horizontal li span {
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" -25, "opsz" 48;
   font-size: inherit;
+  /* transition: all 800ms ease-in; */
 }
+.icon {
+  transition: 250ms ease-in-out;
+}
+
 .top-control {
   width: 100%;
-  padding: var(--vspace-3);
+  /* padding: var(--vspace-3); */
+  position: relative;
 }
 
 form {
   /* background-color: gold; */
+  /* max-width: 600px; */
   display: flex;
   flex-direction: column;
   padding: calc(var(--vspace-3) / 2);
@@ -342,7 +358,7 @@ fieldset {
   gap: var(--vspace-3);
 }
 fieldset button {
-  height: 40px;
+  /* height: 40px; */
   min-width: 300px;
   background-color: var(--black-main);
   color: var(--white-main);
@@ -406,6 +422,8 @@ fieldset .panel label {
   /* margin: 8px 0px 12px; */
 }
 fieldset .panel input {
+  padding: 8px;
+
   min-width: 300px;
   border-radius: 8px;
   border: 1px solid black;
@@ -414,6 +432,7 @@ fieldset .panel input {
   margin: 8px 0px;
 }
 fieldset .panel textarea {
+  padding: 8px;
   border-radius: 8px;
   border: 1px solid black;
   text-indent: 0.5ex;
@@ -443,32 +462,56 @@ button.light {
 }
 
 section.section-layout {
+  position: relative;
   min-height: calc(100vh - 102px);
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
+/* section.section-layout .layer {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+} */
 section.section-layout h2.section-title {
-  margin-top: var(--vspace-0);
+  margin-bottom: var(--vspace-0);
   align-self: center;
   text-align: center;
+  z-index: 2;
 }
+
 section.section-layout .wrap {
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  z-index: 2;
+  position: relative;
+}
+
+section.section-layout .wrap h2.section-title {
+  order: 2;
+}
+section.section-layout .wrap .row.graphic {
+  order: 1;
+}
+section.section-layout .wrap .row.form {
+  order: 3;
 }
 section.section-layout .wrap .row {
   /* flex: 1; */
+
   max-height: 600px;
   max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 2;
 }
 section.section-layout .wrap .row.graphic {
+  height: 100%;
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-start;
@@ -476,6 +519,7 @@ section.section-layout .wrap .row.graphic {
   flex-wrap: wrap;
 }
 section.section-layout .wrap .row.graphic .top-control {
+  height: 100%;
   display: flex;
   flex-direction: row-reverse;
   align-items: flex-start;
@@ -490,16 +534,30 @@ section.section-layout .wrap .row.graphic .top-control svg {
 /* MEDIA QUERIES */ /* MEDIA QUERIES */ /* MEDIA QUERIES */ /* MEDIA QUERIES */ /* MEDIA QUERIES */
 
 @media (min-width: 1200px) {
-  section.section-layout.reverse .wrap {
-    flex-direction: row;
-  }
   section.section-layout .wrap {
     /* max-height: 600px; */
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-evenly;
+    /* justify-content: space-between; */
+  }
+
+  section.section-layout .wrap h2.section-title {
+    order: 1;
+  }
+  section.section-layout .wrap .row.graphic {
+    order: 2;
+  }
+  section.section-layout .wrap .row.form {
+    order: 3;
   }
   section.section-layout .row {
     flex: 1;
+  }
+  section.section-layout .wrap .row.graphic.reverse-order {
+    order: 3;
+  }
+  section.section-layout .wrap .row.form.reverse-order {
+    order: 2;
   }
   section.section-layout .wrap .row.graphic .top-control {
     flex-wrap: nowrap;
@@ -509,8 +567,9 @@ section.section-layout .wrap .row.graphic .top-control svg {
   }
 
   section.section-layout .wrap .row.graphic .top-control svg {
-    max-height: 600px;
+    /* max-height: 600px; */
     height: 600px;
+    height: 100%;
     width: 100%;
   }
   section.section-layout

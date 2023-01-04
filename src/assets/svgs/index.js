@@ -5,6 +5,7 @@ import { ProfileAvatar } from "./ProfileAvatar";
 import { LoginScreen } from "./LoginScreen";
 import { PostAvatar } from "./PostAvatar";
 import { BlogScreen } from "./BlogScreen";
+import { Blob } from "./Blob";
 export {
   Welcoming,
   ImageUpload,
@@ -13,4 +14,5 @@ export {
   LoginScreen,
   PostAvatar,
   BlogScreen,
+  Blob,
 };

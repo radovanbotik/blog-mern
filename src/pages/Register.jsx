@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export const Register = () => {
   return (
-    <Page className="section-layout reverse">
+    <Page className="section-layout">
       <div className="wrap">
         <div className="row graphic">
           <div className="top-control">

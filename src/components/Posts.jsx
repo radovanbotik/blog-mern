@@ -31,22 +31,12 @@ export const Posts = () => {
   //   return <Post key={entry.id} />;
   // });
 
-  return (
-    <Wrapper className="posts">
-      <div className="top-control">{displayPosts}</div>
-    </Wrapper>
-  );
+  return <Wrapper>{displayPosts}</Wrapper>;
 };
 const Wrapper = styled.div`
   width: inherit;
-  /* background-color: #9d3d4d; */
-  .top-control {
-    height: 100%;
-    /* display: flex; */
-    /* flex-wrap: wrap; */
-    /* justify-content: stretch; */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--vspace-1);
-  }
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--vspace-1);
 `;
