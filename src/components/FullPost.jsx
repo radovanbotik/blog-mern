@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import me from "../assets/me.jpg";
+import { Link } from "react-router-dom";
 
 export const FullPost = ({ post }) => {
   const { _id, title, desc, username, categories, image } = post;
@@ -15,13 +16,15 @@ export const FullPost = ({ post }) => {
             <h3>{title}</h3>
           </div>
           <div className="details-panel">
-            <h6>{username}</h6>
+            <Link to={`/?user={username}`}>
+              <h6>{username}</h6>
+            </Link>
             <ul className="horizontal">
               <li>
-                <span class="material-symbols-outlined">edit_note</span>
+                <span className="material-symbols-outlined">edit_note</span>
               </li>
               <li>
-                <span class="material-symbols-outlined">delete</span>
+                <span className="material-symbols-outlined">delete</span>
               </li>
             </ul>
           </div>

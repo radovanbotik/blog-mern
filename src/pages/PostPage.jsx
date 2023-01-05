@@ -21,7 +21,7 @@ export const PostPage = () => {
     <Page>
       <div className="layout">
         <FullPost post={post} />
-        <Sidebar />
+        <Sidebar post={post} />
       </div>
     </Page>
   );

@@ -2,7 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import me from "../assets/me.jpg";
 
-export const Sidebar = () => {
+export const Sidebar = ({ post }) => {
+  const { _id, name, categories } = post;
+  const categoryLabel =
+    categories &&
+    categories.map((entry, index) => {
+      return (
+        <li key={index}>
+          <p className="footnote_ts label">{entry}</p>
+        </li>
+      );
+    });
   return (
     <Wrapper className="sidebar">
       <div className="top-control">
@@ -18,17 +28,7 @@ export const Sidebar = () => {
           </div>
           <div className="panel category">
             <h6>categories</h6>
-            <ul className="horizontal">
-              <li>
-                <p className="footnote_ts">love</p>
-              </li>
-              <li>
-                <p className="footnote_ts">death</p>
-              </li>
-              <li>
-                <p className="footnote_ts">robots</p>
-              </li>
-            </ul>
+            <ul className="horizontal">{categoryLabel}</ul>
           </div>
           <div className="panel social">
             <h6>like this?</h6>
