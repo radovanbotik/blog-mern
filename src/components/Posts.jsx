@@ -6,37 +6,40 @@ import {
   useWindowWidth,
   useWindowHeight,
 } from "@react-hook/window-size/throttled";
-
-const postsList = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
+import { useBlogData } from "../context/BlogContext";
 
 export const Posts = () => {
   const [width, height] = useWindowSize();
   const onlyWidth = useWindowWidth();
   const onlyHeight = useWindowHeight();
+  const { posts } = useBlogData();
 
-  const displayPosts =
-    onlyWidth < 1200
-      ? postsList.slice(0, 2).map(entry => {
-          return <Post key={entry.id} />;
-        })
-      : onlyWidth > 1600
-      ? postsList.slice(0).map(entry => {
-          return <Post key={entry.id} />;
-        })
-      : postsList.slice(0, 3).map(entry => {
-          return <Post key={entry.id} />;
-        });
+  // const allPosts =
+  //   onlyWidth < 1200
+  //     ? posts.slice(0, 2).map(entry => {
+  //         return <Post key={entry._id} {...entry} />;
+  //       })
+  //     : onlyWidth > 1600
+  //     ? posts.slice(0).map(entry => {
+  //         return <Post key={entry._id} {...entry} />;
+  //       })
+  //     : posts.slice(0, 3).map(entry => {
+  //         return <Post key={entry._id} {...entry} />;
+  //       });
 
-  // const displayPosts = postsList.slice(0, 4).map(entry => {
-  //   return <Post key={entry.id} />;
-  // });
+  const allPosts = posts.map(entry => {
+    return <Post key={entry._id} {...entry} />;
+  });
 
-  return <Wrapper>{displayPosts}</Wrapper>;
+  return <Wrapper>{allPosts}</Wrapper>;
 };
 const Wrapper = styled.div`
   width: inherit;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--vspace-1);
+  display: flex;
+  justify-content: flex-start;
+  /* flex-wrap: wrap; */
+  /* display: grid; */
+  /* grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); */
+  gap: var(--vspace-2);
 `;

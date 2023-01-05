@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import me from "../assets/me.jpg";
 
-export const FullPost = () => {
+export const FullPost = ({ post }) => {
+  const { _id, title, desc, username, categories, image } = post;
   return (
     <Wrapper className="posts">
       <div className="top-control">
@@ -11,10 +12,10 @@ export const FullPost = () => {
             <img src={me} alt="" />
           </div> */}
           <div className="edit-panel">
-            <h3>This is a post title.</h3>
+            <h3>{title}</h3>
           </div>
           <div className="details-panel">
-            <h6>This is author.</h6>
+            <h6>{username}</h6>
             <ul className="horizontal">
               <li>
                 <span class="material-symbols-outlined">edit_note</span>
@@ -25,22 +26,9 @@ export const FullPost = () => {
             </ul>
           </div>
           <div className="body">
-            <div className="content">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
-              commodi laudantium praesentium in officiis et est optio, corporis
-              minima. Odit fugit libero ratione id eligendi in, cum eius? Rem
-              maxime soluta ratione tempora exercitationem nostrum consectetur
-              distinctio accusamus! Sunt eligendi esse id quas optio voluptatum
-              enim amet ut, rem mollitia blanditiis, earum voluptates
-              perspiciatis nesciunt sint non illum itaque hic veniam laborum
-              tempora. Sit dolores eum fuga obcaecati aspernatur corporis ipsam
-              ab vel, architecto soluta dolorem a possimus nam non animi cumque
-              officia assumenda fugiat saepe similique maiores nisi? Rerum
-              maxime pariatur dolores perferendis. Aspernatur nostrum impedit
-              reprehenderit enim ullam.
-            </div>
+            <div className="content">{desc}</div>
             <div className="image-control">
-              <img src={me} alt="" />
+              {image && <img src={me} alt="" />}
             </div>
           </div>
           <p className="footnote_ts">A day ago</p>

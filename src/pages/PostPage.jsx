@@ -1,16 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FullPost, Sidebar } from "../components";
+import { useParams } from "react-router-dom";
+import { useBlogData } from "../context/BlogContext";
+import axios from "axios";
 
 export const PostPage = () => {
+  const { posts } = useBlogData();
+  const { id } = useParams();
+  const [post, setPost] = useState({});
+  useEffect(() => {
+    const fetchData = async () => {
+      const resp = await axios.get(`/api/posts/${id}`);
+      setPost(resp.data);
+    };
+    fetchData();
+  }, [id]);
+
   return (
     <Page>
       <div className="layout">
-        <div className="posts">
-          <FullPost />
-          <FullPost />
-          <FullPost />
-        </div>
+        <FullPost post={post} />
         <Sidebar />
       </div>
     </Page>
@@ -28,20 +38,11 @@ const Page = styled.section`
     height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-
-    /* & > * {
-      min-width: 300px;
-    } */
     .sidebar {
       flex: 1;
       max-width: 350px;
       align-self: flex-start;
-    }
-    .posts {
-      flex: 1;
-      /* width: min(100%, 70ch); */
     }
   }
   @media (min-width: 1200px) {

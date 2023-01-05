@@ -68,7 +68,9 @@ export const CreatePost = () => {
                 <div className="panel file-input">
                   <label htmlFor="fileinput" className="footnote_ts">
                     <span>Attach an image</span>
-                    <span class="material-symbols-outlined">add_circle</span>
+                    <span className="material-symbols-outlined">
+                      add_circle
+                    </span>
                   </label>
                   <input
                     type="file"

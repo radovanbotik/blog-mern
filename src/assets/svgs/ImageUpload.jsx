@@ -3,12 +3,12 @@ import React from "react";
 export const ImageUpload = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      // xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
       width="846.54724"
       height="604.04724"
       viewBox="0 0 846.54724 604.04724"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
+      // xmlns:xlink="http://www.w3.org/1999/xlink"
     >
       <path
         d="M261.30511,697.32729l-16.15689,14.87434,12.84025-21.54491c-10.11622-18.345-26.6612-34.19959-26.6612-34.19959s-34.32506,32.88613-34.32506,58.73676S212.37,750.0706,231.32727,750.0706c18.957,0,34.32476-9.02607,34.32476-34.87671C265.652,709.44007,263.94905,703.338,261.30511,697.32729Z"

@@ -3,11 +3,11 @@ import React from "react";
 export const ProfileAvatar = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      // xmlns="http://www.w3.org/2000/svg"
       width="532"
       height="532"
       viewBox="0 0 532 532"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
+      // xmlns:xlink="http://www.w3.org/1999/xlink"
     >
       <g>
         <g>

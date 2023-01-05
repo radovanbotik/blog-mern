@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Posts, Sidebar } from "../components";
 import { BlogScreen } from "../assets/svgs";
+import { useBlogData } from "../context/BlogContext";
 
 export const FrontPage = () => {
   return (
@@ -24,7 +25,7 @@ export const FrontPage = () => {
                 </p>
                 <div className="button-container">
                   <button className="dark">
-                    <span class="material-symbols-outlined">article</span>
+                    <span className="material-symbols-outlined">article</span>
                     write a story
                   </button>
                   <button className="light">inspire yourself</button>
@@ -45,7 +46,7 @@ export const FrontPage = () => {
                 <h5>from the community</h5>
                 <h5 className="endnote_ts">
                   Browse all
-                  <span class="material-symbols-outlined icon">
+                  <span className="material-symbols-outlined icon">
                     chevron_right
                   </span>
                 </h5>

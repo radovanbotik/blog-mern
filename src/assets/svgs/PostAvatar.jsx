@@ -3,12 +3,12 @@ import React from "react";
 export const PostAvatar = () => {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      // xmlns="http://www.w3.org/2000/svg"
       data-name="Layer 1"
       width="947.25"
       height="603.69"
       viewBox="0 0 947.25 603.69"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
+      // xmlns:xlink="http://www.w3.org/1999/xlink"
       className="avatar"
     >
       <path
