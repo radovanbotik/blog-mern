@@ -201,7 +201,7 @@ h6 {
   font-size: 0.8333em;
   /* font-family: var(--ibm-plex); */
   font-weight: 400;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
 }
 
 .footnote_ts {
@@ -573,6 +573,8 @@ section.section-layout .wrap .row.graphic .top-control svg {
     order: 2;
   }
   section.section-layout .wrap .row.graphic .top-control {
+    /* height: 100%; */
+    /* max-height: 600px; */
     flex-wrap: nowrap;
     flex-direction: column;
     align-items: center;
@@ -580,8 +582,9 @@ section.section-layout .wrap .row.graphic .top-control svg {
   }
 
   section.section-layout .wrap .row.graphic .top-control svg {
+    max-height: 400px;
     /* max-height: 600px; */
-    height: 600px;
+    /* height: 600px; */
     height: 100%;
     width: 100%;
   }
