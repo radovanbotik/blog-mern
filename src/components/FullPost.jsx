@@ -4,7 +4,9 @@ import me from "../assets/me.jpg";
 import { Link } from "react-router-dom";
 
 export const FullPost = ({ post }) => {
-  const { _id, title, desc, username, categories, image } = post;
+  const public_folder = "http://localhost:5000/images/";
+  const { _id, title, desc, username, categories, photo } = post;
+
   return (
     <Wrapper className="posts">
       <div className="top-control">
@@ -31,7 +33,7 @@ export const FullPost = ({ post }) => {
           <div className="body">
             <div className="content">{desc}</div>
             <div className="image-control">
-              {image && <img src={me} alt="" />}
+              {photo && <img src={`${public_folder}${photo}`} alt="" />}
             </div>
           </div>
           <p className="footnote_ts">A day ago</p>

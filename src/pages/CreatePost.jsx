@@ -24,8 +24,13 @@ export const CreatePost = () => {
     return resp.data;
   };
   const uploadImage = async postbody => {
-    const resp = await axios.post("/api/upload", postbody);
-    console.log(resp.data);
+    const resp = await axios.post("/api/upload", postbody, {
+      headers: {
+        "content-type": "multipart/form-data",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+    console.log(resp);
   };
 
   //Form actions
@@ -34,12 +39,12 @@ export const CreatePost = () => {
     const postObject = { username: user.username, ...userInput };
     if (userInput.photo_path !== "") {
       const photo_name = photoRef.current.files[0].name;
-      const photo_unique_name = new Date().getUTCMilliseconds() + photo_name;
-      const imageObject = {
-        file: userInput.photo_path,
-        name: photo_unique_name,
-      };
-      uploadImage(imageObject);
+      const filedata = new FormData();
+      const unique_file_name = new Date().getUTCMilliseconds() + photo_name;
+      filedata.append("name", unique_file_name);
+      filedata.append("file", photoRef.current.files[0]);
+      postObject.photo = unique_file_name;
+      uploadImage(filedata);
     }
     uploadPost(postObject).then(data => navigate(`/post/${data._id}`));
   };
