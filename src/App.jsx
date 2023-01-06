@@ -13,26 +13,27 @@ import {
   Login,
   Register,
 } from "./pages";
-
-const user = false;
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RootLayout />}>
-      <Route index element={user ? <FrontPage /> : <Register />} />
-      <Route path="login" element={user ? <FrontPage /> : <Login />} />
-      <Route
-        path="create-post"
-        element={user ? <CreatePost /> : <Register />}
-      />
-      <Route path="post/:id" element={<PostPage />} />
-      <Route path="user" element={user ? <UserSettings /> : <Register />} />
-      <Route path="register" element={<Register />} />
-    </Route>
-  )
-);
+import { useBlogData } from "./context/BlogContext";
 
 function App() {
+  const {
+    globalState: { user },
+  } = useBlogData();
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={user ? <FrontPage /> : <Register />} />
+        <Route path="login" element={user ? <FrontPage /> : <Login />} />
+        <Route
+          path="create-post"
+          element={user ? <CreatePost /> : <Register />}
+        />
+        <Route path="post/:id" element={<PostPage />} />
+        <Route path="user" element={user ? <UserSettings /> : <Register />} />
+        <Route path="register" element={<Register />} />
+      </Route>
+    )
+  );
   return <RouterProvider router={router} />;
 }
 

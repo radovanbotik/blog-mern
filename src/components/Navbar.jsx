@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useBlogData } from "../context/BlogContext";
+import { ProfileAvatar } from "../assets/svgs";
 
 export const Navbar = () => {
-  const user = true;
-
+  const {
+    globalState: { user },
+    handleLogout,
+  } = useBlogData();
   return (
     <Wrapper>
       <div className="top-control">
@@ -31,12 +35,23 @@ export const Navbar = () => {
               <span className="material-symbols-outlined icon">edit_note</span>
             </Link>
           </li>
-          {/* <li>
-            <a>
+          <li onClick={handleLogout}>
+            <Link>
               <span>log out</span>
-              <span className="material-symbols-outlined">login</span>
-            </a>
-          </li> */}
+              <span className="material-symbols-outlined icon">login</span>
+            </Link>
+          </li>
+          <li>
+            <Link>
+              <div className="profile-avatar">
+                {user.profilePicture !== "" ? (
+                  <img src={user.profilePicture} alt="profile picture" />
+                ) : (
+                  <ProfileAvatar />
+                )}
+              </div>
+            </Link>
+          </li>
         </ul>
       </div>
     </Wrapper>
@@ -83,6 +98,20 @@ const Wrapper = styled.nav`
           font-size: var(--size-100);
           text-transform: uppercase;
           /* height: inherit; */
+          .profile-avatar {
+            height: 36px;
+            width: 36px;
+            /* height: var(--size-500); */
+            /* width: var(--size-500); */
+            img {
+              height: 100%;
+              width: 100%;
+            }
+            svg {
+              height: 100%;
+              width: 100%;
+            }
+          }
         }
       }
       li:hover {

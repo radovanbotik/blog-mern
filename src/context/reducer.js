@@ -2,6 +2,7 @@ import {
   INIT_LOGIN_PROCESS,
   LOGIN_PROCESS_SUCCESS,
   LOGIN_PROCESS_FAILURE,
+  LOGOUT_PROCESS,
 } from "./actions";
 
 // const initialState = {
@@ -19,6 +20,9 @@ export const reducer = (state, action) => {
   }
   if (action.type === LOGIN_PROCESS_FAILURE) {
     return { ...state, pending: false, error: true };
+  }
+  if (action.type === LOGOUT_PROCESS) {
+    return { user: null, pending: false, error: false };
   }
   return state;
 };

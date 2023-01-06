@@ -265,6 +265,10 @@ button.light {
   background-color: var(--white-main);
   color: var(--black-main);
 }
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
 a {
   font-size: var(--size-200);
@@ -313,6 +317,7 @@ ul.horizontal li button {
   display: inline-flex;
   flex-direction: row-reverse;
   align-items: center;
+  /* vertical-align: middle; */
   gap: 0.75ex;
   cursor: pointer;
 }
@@ -540,10 +545,13 @@ section.section-layout .wrap .row.graphic .top-control {
   flex-wrap: wrap;
 }
 section.section-layout .wrap .row.graphic .top-control svg {
-  height: 100px;
+  height: 150px;
   width: 100%;
 }
-
+section.section-layout .wrap .row.graphic .top-control img {
+  height: 150px;
+  width: 100%;
+}
 /* MEDIA QUERIES */ /* MEDIA QUERIES */ /* MEDIA QUERIES */ /* MEDIA QUERIES */ /* MEDIA QUERIES */
 
 @media (min-width: 1200px) {
@@ -582,6 +590,13 @@ section.section-layout .wrap .row.graphic .top-control svg {
   }
 
   section.section-layout .wrap .row.graphic .top-control svg {
+    max-height: 400px;
+    /* max-height: 600px; */
+    /* height: 600px; */
+    height: 100%;
+    width: 100%;
+  }
+  section.section-layout .wrap .row.graphic .top-control img {
     max-height: 400px;
     /* max-height: 600px; */
     /* height: 600px; */

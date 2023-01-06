@@ -6,7 +6,8 @@ import { useBlogData } from "../context/BlogContext";
 import axios from "axios";
 
 export const Login = () => {
-  const { handleLogin, handleLoginSuccess, handleLoginFailure } = useBlogData();
+  const { handleLogin, handleLoginSuccess, handleLoginFailure, globalState } =
+    useBlogData();
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -63,7 +64,7 @@ export const Login = () => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className="panel">
+                {/* <div className="panel">
                   <label htmlFor="email">email</label>
                   <input
                     type="email"
@@ -72,7 +73,7 @@ export const Login = () => {
                     value={userData[name]}
                     onChange={handleChange}
                   />
-                </div>
+                </div> */}
                 <div className="panel">
                   <label htmlFor="password">password</label>
                   <input
@@ -85,7 +86,11 @@ export const Login = () => {
                 </div>
               </fieldset>
               <fieldset>
-                <button className="user-submit" type="submit">
+                <button
+                  className="user-submit"
+                  type="submit"
+                  disabled={globalState.pending}
+                >
                   Sign in
                 </button>
                 <div>
