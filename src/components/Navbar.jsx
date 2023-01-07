@@ -47,7 +47,7 @@ export const Navbar = () => {
             <li>
               <Link>
                 <div className="profile-avatar">
-                  {user?.profilePicture ? (
+                  {user?.profilePicture !== "" ? (
                     <img src={user.profilePicture} alt="profile picture" />
                   ) : (
                     <ProfileAvatar />

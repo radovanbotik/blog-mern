@@ -6,6 +6,9 @@ import {
   LOGIN_PROCESS_SUCCESS,
   LOGIN_PROCESS_FAILURE,
   LOGOUT_PROCESS,
+  INIT_PROFILE_UPDATE,
+  PROFILE_UPDATE_SUCCESS,
+  PROFILE_UPDATE_FAILURE,
 } from "./actions.js";
 
 const BlogCTX = React.createContext();
@@ -42,13 +45,11 @@ const BlogContext = ({ children }) => {
   };
 
   const handleLoginSuccess = user => {
-    console.log(user);
     dispatch({ type: LOGIN_PROCESS_SUCCESS, payload: user });
     setUserToLocalStorage(user);
   };
 
   const handleLoginFailure = msg => {
-    console.log(msg);
     dispatch({ type: LOGIN_PROCESS_FAILURE });
   };
 
@@ -56,6 +57,19 @@ const BlogContext = ({ children }) => {
   const handleLogout = () => {
     dispatch({ type: LOGOUT_PROCESS });
     removeUserFromLocalStorage();
+  };
+
+  ///Update Actions///
+  const handleUpdate = () => {
+    dispatch({ type: INIT_PROFILE_UPDATE });
+  };
+  const handleUpdateSuccess = user_update => {
+    dispatch({ type: PROFILE_UPDATE_SUCCESS, payload: user_update });
+    removeUserFromLocalStorage();
+    setUserToLocalStorage(user_update);
+  };
+  const handleUpdateFailure = () => {
+    dispatch({ type: PROFILE_UPDATE_FAILURE });
   };
 
   ///Fetching Posts///
@@ -76,6 +90,9 @@ const BlogContext = ({ children }) => {
         handleLoginSuccess,
         handleLoginFailure,
         handleLogout,
+        handleUpdate,
+        handleUpdateSuccess,
+        handleUpdateFailure,
       }}
     >
       {children}

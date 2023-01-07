@@ -8,6 +8,10 @@ import { useBlogData } from "../context/BlogContext";
 export const UserSettings = () => {
   const {
     globalState: { user },
+    handleUpdate,
+    handleUpdateSuccess,
+    handleUpdateFailure,
+    globalState,
   } = useBlogData();
   const fileRef = useRef();
   const [userSettings, setUserSettings] = useState({
@@ -15,12 +19,14 @@ export const UserSettings = () => {
     username: "",
     email: "",
     password: "",
+    photo: "",
   });
+  const [uploadSuccess, setUploadSuccess] = useState(false);
 
   //Fetch Logic
   const uploadNewCredentials = async settings => {
     const resp = await axios.put(`/api/users/${user._id}`, settings);
-    console.log(resp.data);
+    return resp.data;
   };
 
   const uploadNewProfileImage = async fileObject => {
@@ -30,7 +36,6 @@ export const UserSettings = () => {
         "Access-Control-Allow-Origin": "*",
       },
     });
-    console.log(resp);
   };
 
   //Form Logic
@@ -41,18 +46,27 @@ export const UserSettings = () => {
   };
   const handleSubmit = e => {
     e.preventDefault();
-    if (fileRef.current.files[0]) {
-      const file = fileRef.current.files[0];
-      const filename =
-        new Date().getUTCMilliseconds() + fileRef.current.files[0].name;
-      const fileObject = {
-        name: filename,
-        file: file,
-      };
-      userSettings.profilePicture = filename;
-      uploadNewProfileImage(fileObject);
+    handleUpdate();
+    try {
+      if (fileRef.current.files[0]) {
+        const file = fileRef.current.files[0];
+        const filename =
+          new Date().getUTCMilliseconds() + fileRef.current.files[0].name;
+        const fileObject = {
+          name: filename,
+          file: file,
+        };
+        userSettings.profilePicture = filename;
+        uploadNewProfileImage(fileObject);
+      }
+      uploadNewCredentials(userSettings).then(data => {
+        handleUpdateSuccess(data);
+      });
+      setUploadSuccess(true);
+    } catch (error) {
+      console.log(error);
+      handleUpdateFailure();
     }
-    uploadNewCredentials(userSettings);
   };
 
   // useEffect(() => {
@@ -83,8 +97,11 @@ export const UserSettings = () => {
                 <legend className="center">profile picture</legend>
                 <div className="panel">
                   <div className="image-control center">
-                    {user.profilePicture ? (
-                      <img src={user.profilePicture} alt="" />
+                    {userSettings.photo ? (
+                      <img
+                        src={URL.createObjectURL(fileRef.current.files[0])}
+                        alt=""
+                      />
                     ) : (
                       <ProfileAvatar />
                     )}
@@ -97,6 +114,9 @@ export const UserSettings = () => {
                     type="file"
                     id="profilePicture"
                     style={{ display: "none" }}
+                    name="photo"
+                    value={userSettings.photo}
+                    onChange={handleChange}
                     ref={fileRef}
                   />
                 </div>
@@ -142,7 +162,9 @@ export const UserSettings = () => {
               </fieldset>
               <fieldset>
                 <span className="footnote_ts">delete account</span>
-                <button type="submit">submit</button>
+                <button type="submit" disabled={globalState.pending}>
+                  submit
+                </button>
               </fieldset>
             </form>
           </div>
