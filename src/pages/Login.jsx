@@ -60,7 +60,7 @@ export const Login = () => {
                     type="text"
                     id="username"
                     name="username"
-                    value={userData[name]}
+                    value={userData.username}
                     onChange={handleChange}
                   />
                 </div>
@@ -80,7 +80,7 @@ export const Login = () => {
                     type="password"
                     id="password"
                     name="password"
-                    value={userData[name]}
+                    value={userData.password}
                     onChange={handleChange}
                   />
                 </div>

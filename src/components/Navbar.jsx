@@ -35,23 +35,27 @@ export const Navbar = () => {
               <span className="material-symbols-outlined icon">edit_note</span>
             </Link>
           </li>
-          <li onClick={handleLogout}>
-            <Link>
-              <span>log out</span>
-              <span className="material-symbols-outlined icon">login</span>
-            </Link>
-          </li>
-          <li>
-            <Link>
-              <div className="profile-avatar">
-                {user.profilePicture !== "" ? (
-                  <img src={user.profilePicture} alt="profile picture" />
-                ) : (
-                  <ProfileAvatar />
-                )}
-              </div>
-            </Link>
-          </li>
+          {user && (
+            <li onClick={handleLogout}>
+              <Link>
+                <span>log out</span>
+                <span className="material-symbols-outlined icon">login</span>
+              </Link>
+            </li>
+          )}
+          {user && (
+            <li>
+              <Link>
+                <div className="profile-avatar">
+                  {user?.profilePicture ? (
+                    <img src={user.profilePicture} alt="profile picture" />
+                  ) : (
+                    <ProfileAvatar />
+                  )}
+                </div>
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </Wrapper>

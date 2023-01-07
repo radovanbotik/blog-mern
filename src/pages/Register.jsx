@@ -74,7 +74,7 @@ export const Register = () => {
                     id="username"
                     name="username"
                     onChange={handleChange}
-                    value={userData[name]}
+                    value={userData.username}
                   />
                 </div>
                 <div className="panel">
@@ -84,7 +84,7 @@ export const Register = () => {
                     id="email"
                     name="email"
                     onChange={handleChange}
-                    value={userData[name]}
+                    value={userData.email}
                   />
                 </div>
                 <div className="panel">
@@ -94,7 +94,7 @@ export const Register = () => {
                     id="password"
                     name="password"
                     onChange={handleChange}
-                    value={userData[name]}
+                    value={userData.password}
                   />
                 </div>
               </fieldset>

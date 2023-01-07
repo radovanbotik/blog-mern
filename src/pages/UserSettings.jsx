@@ -1,9 +1,69 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { ProfileDetails } from "../assets/svgs";
 import { ProfileAvatar } from "../assets/svgs";
+import { useBlogData } from "../context/BlogContext";
 
 export const UserSettings = () => {
+  const {
+    globalState: { user },
+  } = useBlogData();
+  const fileRef = useRef();
+  const [userSettings, setUserSettings] = useState({
+    userId: user._id,
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  //Fetch Logic
+  const uploadNewCredentials = async settings => {
+    const resp = await axios.put(`/api/users/${user._id}`, settings);
+    console.log(resp.data);
+  };
+
+  const uploadNewProfileImage = async fileObject => {
+    const resp = await axios.post("/api/upload", fileObject, {
+      headers: {
+        "content-type": "multipart/form-data",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
+    console.log(resp);
+  };
+
+  //Form Logic
+  const handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setUserSettings(prev => ({ ...prev, [name]: value }));
+  };
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (fileRef.current.files[0]) {
+      const file = fileRef.current.files[0];
+      const filename =
+        new Date().getUTCMilliseconds() + fileRef.current.files[0].name;
+      const fileObject = {
+        name: filename,
+        file: file,
+      };
+      userSettings.profilePicture = filename;
+      uploadNewProfileImage(fileObject);
+    }
+    uploadNewCredentials(userSettings);
+  };
+
+  // useEffect(() => {
+  //   setUserSettings({
+  //     userId: user._id,
+  //     username: user.username,
+  //     email: user.email,
+  //     password: user.password,
+  //   });
+  // }, [user]);
+
   return (
     <Page className="section-layout">
       {/* <h2 className="h2-bold section-title">Account settings</h2> */}
@@ -17,14 +77,17 @@ export const UserSettings = () => {
         </div>
         <div className="row form">
           <div className="top-control">
-            <form>
+            <form onSubmit={handleSubmit}>
               <h2 className="h2-bold center">Your details</h2>
               <fieldset className="user-picture">
                 <legend className="center">profile picture</legend>
                 <div className="panel">
                   <div className="image-control center">
-                    {/* <img src={me} alt="" /> */}
-                    <ProfileAvatar />
+                    {user.profilePicture ? (
+                      <img src={user.profilePicture} alt="" />
+                    ) : (
+                      <ProfileAvatar />
+                    )}
                   </div>
                   <label htmlFor="profilePicture" className="center">
                     <span className="material-symbols-outlined">image</span>
@@ -34,33 +97,52 @@ export const UserSettings = () => {
                     type="file"
                     id="profilePicture"
                     style={{ display: "none" }}
+                    ref={fileRef}
                   />
                 </div>
               </fieldset>
               <fieldset className="user-data">
                 <legend>account details</legend>
                 <div className="panel">
-                  <label htmlFor="user_name">
+                  <label htmlFor="username">
                     <span> your username</span>
                   </label>
-                  <input type="text" id="user_name" />
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value={userSettings.username}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="panel">
-                  <label htmlFor="user_email">
+                  <label htmlFor="email">
                     <span>your email</span>
                   </label>
-                  <input type="email" id="user_email" />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={userSettings.email}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="panel">
-                  <label htmlFor="user_password">
+                  <label htmlFor="password">
                     <span>your password</span>
                   </label>
-                  <input type="password" id="user_password" />
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    value={userSettings.password}
+                    onChange={handleChange}
+                  />
                 </div>
               </fieldset>
               <fieldset>
                 <span className="footnote_ts">delete account</span>
-                <button>submit</button>
+                <button type="submit">submit</button>
               </fieldset>
             </form>
           </div>
