@@ -110,7 +110,9 @@ export const Register = () => {
                     </p>
                   )}
                   <span className="footnote_ts">Member already? </span>
-                  <Link className="footnote_ts">Sign in.</Link>
+                  <Link to="/login" className="footnote_ts underline">
+                    Sign in.
+                  </Link>
                 </div>
               </fieldset>
             </form>

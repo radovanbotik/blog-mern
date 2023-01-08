@@ -7,7 +7,9 @@ import axios from "axios";
 
 export const FullPost = ({ post }) => {
   const public_folder = "http://localhost:5000/images/";
-  const { _id, title, desc, username, categories, photo } = post;
+  const { _id, title, desc, username, categories, updatedAt } = post;
+  const postDate = new Date(updatedAt).toLocaleDateString();
+  // console.log(postDate);
   const {
     globalState: { user },
     globalState,
@@ -15,11 +17,11 @@ export const FullPost = ({ post }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [flagForUpdate, setFlagForUpdate] = useState(false);
-
   const [updatedValues, setUpdatedValues] = useState({
     title: title,
     desc: desc,
   });
+  const [dropdownActive, setDropdownActive] = useState(false);
 
   const updateRequest = async data => {
     try {
@@ -70,146 +72,180 @@ export const FullPost = ({ post }) => {
     });
   }, [post]);
   return (
-    <Wrapper className="posts">
-      <div className="top-control">
-        <div className="full-post">
-          {/* <div className="image-control">
-            <img src={me} alt="" />
-          </div> */}
+    <Article>
+      <div className="article-title">
+        {flagForUpdate && (
+          <input
+            type="text"
+            name="title"
+            value={updatedValues.title}
+            onChange={handleChange}
+            autoFocus={true}
+          ></input>
+        )}
+        {!flagForUpdate && <h2 className="resize">{title}</h2>}
+        {/* <Link to={`/?user=${username}`}>author</Link> */}
+        <p>
+          <span className="endnote_ts">by</span>
+          <span className="capitalize-name">
+            {" "}
+            {username === user.username ? "you" : username}
+          </span>
+        </p>
+      </div>
 
-          <div className="edit-panel">
-            {flagForUpdate ? (
-              <input
-                type="text"
-                name="title"
-                value={updatedValues.title}
-                onChange={handleChange}
-                autoFocus={true}
-              ></input>
-            ) : (
-              <h3>{title}</h3>
-            )}
+      <div className="article-body">
+        {flagForUpdate ? (
+          <textarea
+            type="text"
+            name="desc"
+            value={updatedValues.desc}
+            onChange={handleChange}
+          ></textarea>
+        ) : (
+          <div className="content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
+            sapiente dignissimos hic expedita fugiat repudiandae delectus
+            nostrum quaerat eum illum reprehenderit deleniti doloremque est eos,
+            blanditiis explicabo tenetur pariatur ipsam exercitationem adipisci
+            consectetur voluptates earum. Tempora mollitia eligendi, architecto
+            dicta, repellendus sit animi ullam laborum a ipsa non recusandae.
+            Quam eaque quae nemo modi, numquam minima tempora temporibus nostrum
+            dignissimos quasi alias neque iusto cupiditate dolor laboriosam,
+            ipsa inventore ab a nulla obcaecati illum maiores!
+            {desc}
           </div>
-          <div className="details-panel">
-            <Link to={`/?user={username}`}>
-              <h6>{username}</h6>
-            </Link>
-            {username === user?.username && (
-              <ul className="horizontal">
-                {!flagForUpdate && (
-                  <li>
-                    <span
-                      className="material-symbols-outlined icon"
-                      onClick={initializeEdit}
-                    >
-                      edit_note
-                    </span>
-                  </li>
-                )}
-                {flagForUpdate && (
-                  <li>
-                    <span
-                      className="material-symbols-outlined icon"
-                      onClick={confirmEdit}
-                    >
-                      check_small
-                    </span>
-                  </li>
-                )}
-                <li>
-                  <span
-                    className="material-symbols-outlined icon"
-                    onClick={handleRemove}
-                  >
-                    delete
+        )}
+        {/* <div className="image-control">
+          {photo && <img src={`${public_folder}${photo}`} alt="" />}
+        </div> */}
+      </div>
+      <span className="footnote_ts">Created on {postDate}</span>
+
+      {username === user?.username && (
+        <span className="caption_ts">You are allowed to edit this post.</span>
+      )}
+      {username === user?.username && (
+        <div className="article-controls">
+          <div className="controls">
+            <button onClick={() => setDropdownActive(prev => !prev)}>
+              controls
+            </button>
+            <div className={dropdownActive ? "dropdown active" : "dropdown"}>
+              {!flagForUpdate && (
+                <button className="option" onClick={initializeEdit}>
+                  <span className="material-symbols-outlined icon">
+                    edit_note
                   </span>
-                </li>
-              </ul>
-            )}
-          </div>
-          <div className="body">
-            {flagForUpdate ? (
-              <textarea
-                type="text"
-                name="desc"
-                value={updatedValues.desc}
-                onChange={handleChange}
-              ></textarea>
-            ) : (
-              <div className="content">{desc}</div>
-            )}
-            <div className="image-control">
-              {photo && <img src={`${public_folder}${photo}`} alt="" />}
+                  <span>edit</span>
+                </button>
+              )}
+              {!flagForUpdate && (
+                <button className="option" onClick={handleRemove}>
+                  <span className="material-symbols-outlined icon">delete</span>
+                  <span>delete</span>
+                </button>
+              )}
+              {flagForUpdate && (
+                <button className="option" onClick={confirmEdit}>
+                  <span className="material-symbols-outlined icon">
+                    check_small
+                  </span>
+                  <span>confirm edit</span>
+                </button>
+              )}
+              {flagForUpdate && (
+                <button
+                  className="option"
+                  onClick={() => setFlagForUpdate(false)}
+                >
+                  <span className="material-symbols-outlined icon">
+                    backspace
+                  </span>
+                  <span>discard changes</span>
+                </button>
+              )}
             </div>
           </div>
-          <p className="footnote_ts">A day ago</p>
         </div>
-      </div>
-    </Wrapper>
+      )}
+    </Article>
   );
 };
 
-const Wrapper = styled.div`
+const Article = styled.article`
   width: inherit;
   background-color: #d4dba6;
-  /* height: 100%; */
-
-  .top-control {
-    height: 100%;
-    height: inherit;
-    width: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: var(--vspace-3);
+  padding: 1em 2em;
+  .article-title {
     display: flex;
-    flex-direction: column;
-    align-items: end;
-    .full-post {
-      height: 100%;
-      padding: var(--vspace-3);
-      background-color: #a6a8db;
+    align-items: baseline;
+    gap: 1ex;
+  }
+  .article-body {
+  }
+  .article-controls {
+    align-self: flex-start;
+
+    /* align-self: end; */
+    /* button ul {
+      gap: 0;
+      li {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5ex;
+      }
+      li:hover {
+        .icon {
+          font-variation-settings: "FILL" 1;
+        }
+      }
+      li:active {
+        .icon {
+          font-variation-settings: "FILL" 1, "wght" 300;
+        }
+      }
+    } */
+    .controls {
       display: flex;
-      flex-direction: column;
-      /* .image-control {
-        height: 100%;
-        width: 100%;
-        img {
-          max-height: 600px;
-        }
-      } */
-      h3 {
-        word-break: keep-all;
-      }
-      .edit-panel {
+      button {
+        height: 28px;
+        padding: 0 1em;
+        font-size: var(--size-100);
         display: flex;
-        /* flex-wrap: wrap; */
-        justify-content: space-between;
-        align-items: flex-end;
-        ul {
-          flex-wrap: nowrap;
+        align-items: center;
+        span {
+          line-height: 0;
         }
       }
-      .details-panel {
+      /* flex-direction: column; */
+      .dropdown {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: baseline;
+        /* flex-direction: column; */
+        overflow: hidden;
+        /* height: 0; */
+        width: 0;
+        .option:nth-child(1) {
+          transform: translateX(-100%);
+          transition: 250ms ease-in-out;
+        }
+        .option:nth-child(2) {
+          transform: translateX(-200%);
+          transition: 500ms ease-in-out;
+        }
       }
-      .body {
-        /* display: flex; */
-        display: grid;
-        grid-template-columns: 1fr;
-        @media (min-width: 950px) {
-          grid-template-columns: min(100%, 70ch) 1fr;
+      .dropdown.active {
+        /* height: auto; */
+        width: auto;
+        .option:nth-child(1) {
+          transform: translateX(0);
         }
-        .content {
-          /* width: min(100%, 70ch) */
-          text-indent: 0.5ex;
-          line-height: 1.6;
-          &:first-letter {
-            font-size: var(--size-400);
-            font-weight: 500;
-          }
-        }
-        .image-control {
-          max-height: 200px;
+        .option:nth-child(2) {
+          transform: translateX(0);
         }
       }
     }

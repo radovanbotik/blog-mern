@@ -10,111 +10,117 @@ export const Navbar = () => {
     handleLogout,
   } = useBlogData();
   return (
-    <Wrapper>
+    <Navigation>
       <div className="top-control">
         <Link to="/" className="logo">
-          <h3 className="h2-bold">blog</h3>
+          <h2 className="h2-bold">blog.</h2>
         </Link>
-        <ul className="horizontal">
-          <li>
-            <Link to="/">
-              <span>home</span>
-              <span className="material-symbols-outlined icon">home</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/user">
-              <span>profile</span>
-              <span className="material-symbols-outlined icon">groups</span>
-            </Link>
-          </li>
-
-          <li>
-            <Link to="/create-post">
-              <span>write</span>
-              <span className="material-symbols-outlined icon">edit_note</span>
-            </Link>
-          </li>
-          {user && (
-            <li onClick={handleLogout}>
-              <Link>
-                <span>log out</span>
+        {user && (
+          <ul className="horizontal user-in">
+            <li>
+              <Link to="/" className="link-button">
+                <span>home</span>
+                <span className="material-symbols-outlined icon">home</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/user" className="link-button">
+                <span>profile</span>
+                <span className="material-symbols-outlined icon">
+                  account_circle
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/create-post" className="link-button">
+                <span>write</span>
+                <span className="material-symbols-outlined icon">
+                  edit_note
+                </span>
+              </Link>
+            </li>
+            {user && (
+              <li onClick={handleLogout}>
+                <Link className="link-button">
+                  <span>log out</span>
+                  <span className="material-symbols-outlined icon">login</span>
+                </Link>
+              </li>
+            )}
+            {user && (
+              <li>
+                <Link>
+                  <div className="profile-avatar">
+                    {user?.profilePicture !== "" ? (
+                      <img src={user.profilePicture} alt="profile picture" />
+                    ) : (
+                      <ProfileAvatar />
+                    )}
+                  </div>
+                </Link>
+              </li>
+            )}
+          </ul>
+        )}
+        {!user && (
+          <ul className="horizontal user-out">
+            <li>
+              <Link to="/login" className="link-button">
+                <span>login</span>
                 <span className="material-symbols-outlined icon">login</span>
               </Link>
             </li>
-          )}
-          {user && (
             <li>
-              <Link>
-                <div className="profile-avatar">
-                  {user?.profilePicture !== "" ? (
-                    <img src={user.profilePicture} alt="profile picture" />
-                  ) : (
-                    <ProfileAvatar />
-                  )}
-                </div>
+              <Link to="/register" className="link-button">
+                <span>register</span>
+                <span className="material-symbols-outlined">
+                  volunteer_activism
+                </span>
               </Link>
             </li>
-          )}
-        </ul>
+          </ul>
+        )}
       </div>
-    </Wrapper>
+    </Navigation>
   );
 };
 
-const Wrapper = styled.nav`
+const Navigation = styled.nav`
   min-height: 80px;
   width: 100%;
-  /* padding: 1em 1em 0.5em; */
-  /* padding: 0em 1em; */
-  /* position: sticky; */
   top: 0;
-  /* background-color: var(--white-main); */
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: var(--vspace-2);
+  margin-bottom: 2em;
   .top-control {
-    flex: 1;
-    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: var(--vspace-3);
-    align-items: baseline;
-    /* justify-content: space-between; */
     .logo {
-      /* display: inline-block; */
       display: block;
-      height: 100%;
+      display: grid;
+      h3 {
+        margin: 0;
+      }
     }
     ul.horizontal {
       float: left;
-      //column by default
-      //break at 600px
-      /* flex-direction: column; */
-      /* margin-right: 2ex; */
       align-items: center;
-      gap: 2.5ex;
+      gap: 1ex;
       li {
-        justify-content: flex-end;
-        a,
-        button {
-          border: 0;
-          font-weight: 400;
-          font-size: var(--size-100);
-          text-transform: uppercase;
-          /* height: inherit; */
-          .profile-avatar {
-            height: 36px;
-            width: 36px;
-            /* height: var(--size-500); */
-            /* width: var(--size-500); */
-            img {
-              height: 100%;
-              width: 100%;
-            }
-            svg {
-              height: 100%;
-              width: 100%;
-            }
+        .profile-avatar {
+          border-radius: 50%;
+          border: 1px solid black;
+          height: 32px;
+          width: 32px;
+          img {
+            height: 100%;
+            width: 100%;
+          }
+          svg {
+            height: 100%;
+            width: 100%;
           }
         }
       }
@@ -133,6 +139,8 @@ const Wrapper = styled.nav`
   @media (min-width: 600px) {
     .top-control {
       flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
       .logo {
         h1 {
           font-size: var(--size-700);

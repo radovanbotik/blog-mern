@@ -1,17 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import { Posts, Sidebar } from "../components";
-import { BlogScreen } from "../assets/svgs";
+import { PostThumbnailGallery, Sidebar } from "../components";
+import { BlogScreen, Notebook } from "../assets/svgs";
 import { useBlogData } from "../context/BlogContext";
+import { Link } from "react-router-dom";
 
 export const FrontPage = () => {
   return (
-    <Page>
-      <Header2 className="section-layout">
+    <Page className="section-layout">
+      <Header2>
         <div className="wrap">
-          <div className="row graphic reverse-order">
+          <div className="row graphic hero reverse-order">
             <div className="top-control">
-              <BlogScreen />
+              {/* <BlogScreen /> */}
+              <Notebook />
             </div>
           </div>
           <div className="row form reverse-order">
@@ -19,43 +21,38 @@ export const FrontPage = () => {
               <article className="scene-description">
                 <h1 className="h1-bold">Tell your story in seconds</h1>
                 <p>
-                  Easily create and customize stunning illustrations with
-                  collections made by artists across the globe. Try it, it’s
-                  kind of fun.
+                  Easily write and share your own stories with wtih people
+                  across the globe. Try it, it's free.
                 </p>
                 <div className="button-container">
-                  <button className="dark">
+                  <Link to="/create-post" className="button-big dark">
                     <span className="material-symbols-outlined">article</span>
                     write a story
-                  </button>
-                  <button className="light">inspire yourself</button>
+                  </Link>
+                  <button className="button-big light">inspire yourself</button>
                 </div>
               </article>
             </div>
           </div>
         </div>
       </Header2>
-      <PostsSlider className="section-layout">
-        <h2 className="h2-bold section-title">
-          How does Blog make sharing your projects simple and fun?
-        </h2>
+      <Previews>
         <div className="wrap">
+          <h2 className="h2-bold title">Check out the most recent additions</h2>
           <div className="top-control">
-            <div className="layout">
-              <div className="component-header">
-                <h5>from the community</h5>
-                <h5 className="endnote_ts">
-                  Browse all
-                  <span className="material-symbols-outlined icon">
-                    chevron_right
-                  </span>
-                </h5>
-              </div>
-              <Posts />
+            <div className="component-header">
+              <h5>from the community</h5>
+              <h5 className="endnote_ts">
+                Browse all
+                <span className="material-symbols-outlined icon">
+                  chevron_right
+                </span>
+              </h5>
             </div>
+            <PostThumbnailGallery />
           </div>
         </div>
-      </PostsSlider>
+      </Previews>
     </Page>
   );
 };
@@ -66,8 +63,26 @@ const Page = styled.section`
   flex-direction: column;
 `;
 
-const Header2 = styled.section``;
-const PostsSlider = styled.section`
+const Header2 = styled.section`
+  height: calc(100vh - 80px - 4em);
+  display: grid;
+  place-content: center;
+  svg {
+    max-height: 600px;
+  }
+`;
+const Previews = styled.section`
+  padding: 0em 1em;
+  display: flex;
+  flex-direction: column;
+  h2.title {
+    text-align: center;
+  }
+  @media (min-width: 660px) {
+    h2.title {
+      text-align: left;
+    }
+  }
   .component-header {
     display: flex;
     justify-content: space-between;

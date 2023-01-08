@@ -4,6 +4,7 @@ import { FullPost, Sidebar } from "../components";
 import { useParams } from "react-router-dom";
 import { useBlogData } from "../context/BlogContext";
 import axios from "axios";
+import { PostAvatar } from "../assets/svgs";
 
 export const PostPage = () => {
   const { posts } = useBlogData();
@@ -16,38 +17,26 @@ export const PostPage = () => {
     };
     fetchData();
   }, [id]);
-
   return (
-    <Page>
-      <div className="layout">
-        <FullPost post={post} />
-        <Sidebar post={post} />
+    <Page className="section-layout">
+      <div className="wrap">
+        <h2 className="h2-bold section-title">The article</h2>
+        <div className="row graphic">
+          <div className="top-control">
+            {/* <Sidebar post={post} /> */}
+            <PostAvatar />
+          </div>
+        </div>
+        <div className="row form">
+          <div className="top-control">
+            <FullPost post={post} />
+          </div>
+        </div>
       </div>
     </Page>
   );
 };
 
 const Page = styled.section`
-  /* height: 100%; */
-
-  & > * {
-    padding: var(--vspace-3);
-    margin-top: var(--vspace-1);
-  }
-  .layout {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    .sidebar {
-      flex: 1;
-      max-width: 350px;
-      align-self: flex-start;
-    }
-  }
-  @media (min-width: 1200px) {
-    .layout {
-      flex-direction: row;
-    }
-  }
+  /* background-color: yellow; */
 `;

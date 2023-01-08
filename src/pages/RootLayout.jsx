@@ -6,8 +6,8 @@ import styled from "styled-components";
 export const RootLayout = () => {
   return (
     <Root>
-      <Navbar />
       <div className="outlet">
+        <Navbar />
         <Outlet />
       </div>
     </Root>
@@ -15,20 +15,20 @@ export const RootLayout = () => {
 };
 
 const Root = styled.div`
-  /* max-width: calc(25 * var(--vspace-0));
-  margin: 0 auto; */
-  /* padding: 0em 1em; */
-  /* margin: var(--vspace-3) var(--vspace-2); */
-
   .outlet {
-    /* background-color: gold;
-    box-shadow: 0px 0px 20px 1px rgba(135, 130, 4, 0.747); */
+    padding: 1em;
+    background-color: gold;
+    box-shadow: 0px 0px 20px 1px rgba(135, 130, 4, 0.747);
     width: 100%;
-    /* border-top-left-radius: 4px;
-    border-top-right-radius: 4px; */
-    /* display: grid; */
     align-content: center;
     overflow: hidden;
-    /* border: 2px solid black; */
+  }
+  @media (min-width: 500px) {
+    .outlet {
+      padding: 2em;
+    }
+  }
+  @media (min-width: 1050px) {
+    padding: 0.5em 0;
   }
 `;

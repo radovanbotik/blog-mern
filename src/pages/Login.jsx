@@ -95,7 +95,9 @@ export const Login = () => {
                 </button>
                 <div>
                   <span className="footnote_ts">Need an account? </span>
-                  <Link className="footnote_ts">Sign up.</Link>
+                  <Link to="/register" className="footnote_ts underline">
+                    Sign up.
+                  </Link>
                 </div>
               </fieldset>
             </form>

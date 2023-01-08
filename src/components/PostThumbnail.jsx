@@ -4,7 +4,7 @@ import me from "../assets/me.jpg";
 import { PostAvatar } from "../assets/svgs";
 import { Link } from "react-router-dom";
 
-export const Post = props => {
+export const PostThumbnail = props => {
   const { _id, title, desc, username, categories, createdAt, image } = props;
   const postTime = new Date(createdAt).toLocaleDateString();
   const categoryLabel = categories.map((entry, index) => {
@@ -17,12 +17,12 @@ export const Post = props => {
   return (
     <PostThumb to={`/post/${_id}`}>
       {image ? <img src={image} alt="" /> : <PostAvatar />}
-      <div className="category-date">
+      {/* <div className="category-date">
         {categories.length > 0 && (
           <ul className="horizontal">{categoryLabel}</ul>
         )}
         <p className="footnote_ts">{postTime}</p>
-      </div>
+      </div> */}
       <div className="post-details">
         <div className="user-thumb">
           <img src={me} alt="" />
@@ -40,12 +40,6 @@ export const Post = props => {
 
 const PostThumb = styled(Link)`
   appearance: none;
-  aspect-ratio: 4/3;
-  max-height: 322px;
-  /* max-width: 241px; */
-  /* max-width: 322px; */
-  /* max-width: ; */
-  /* height: 322px; */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -64,15 +58,24 @@ const PostThumb = styled(Link)`
   }
   .post-details {
     display: flex;
-    gap: var(--vspace-3);
     .user-thumb {
-      height: 48px;
-      width: 48px;
+      height: 32px;
+      width: 32px;
       border-radius: 50%;
       /* overflow: hidden; */
       clip-path: circle();
     }
     .post-info {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.25ex 1ex;
+      h6 {
+        margin: 0;
+        line-height: 1;
+        letter-spacing: 0.5px;
+      }
       p {
         line-height: 1;
       }
