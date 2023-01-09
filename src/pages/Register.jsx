@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import styled from "styled-components";
 import { Welcoming } from "../assets/svgs";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
 
 export const Register = () => {
   const [userData, setUserData] = useState({
@@ -46,6 +47,100 @@ export const Register = () => {
     e.preventDefault();
     sendData();
   };
+  const formRef = useRef();
+
+  useLayoutEffect(() => {
+    console.log(formRef);
+    const dots_top = [...document.querySelectorAll("svg g#dots_top .dot")];
+    const dots_left = [...document.querySelectorAll("svg g#dots_left .dot")];
+    const dots_right = [...document.querySelectorAll("svg g#dots_right .dot")];
+
+    const animation = gsap
+      .timeline()
+      .fromTo(
+        dots_top,
+        { x: "200px", y: "50px", opacity: 0 },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          repeat: 1,
+          repeatDelay: 0.2,
+          repeatRefresh: 1,
+          // yoyoEase: "back",
+          stagger: 0.2,
+          ease: "Power1.easeOut",
+          duration: 1,
+        }
+      )
+      .fromTo(
+        dots_right,
+        { x: "200px", y: "100px", opacity: 0 },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          repeat: 1,
+          repeatDelay: 0.2,
+          repeatRefresh: 1,
+          // yoyoEase: "back",
+          stagger: 0.2,
+          ease: "Power1.easeOut",
+          duration: 1,
+        },
+        0.5
+      )
+      .fromTo(
+        dots_left,
+        { x: "200px", y: "150px", opacity: 0 },
+        {
+          x: 0,
+          y: 0,
+          opacity: 1,
+          repeat: 1,
+          repeatDelay: 0.2,
+          repeatRefresh: 1,
+          // yoyoEase: "back",
+          stagger: 0.2,
+          ease: "Power1.easeOut",
+          duration: 1,
+        },
+        1
+      )
+      .fromTo(
+        "#whole_body",
+        { y: "5px", transformOrigin: "0% 100%" },
+        {
+          y: "0px",
+          duration: 1,
+          repeat: 2,
+          yoyo: true,
+          repeatDelay: 0.2,
+          ease: "back",
+          duration: 1,
+        },
+        0
+      )
+      .to(
+        "#tree",
+        {
+          rotate: "5deg",
+          transformOrigin: "50% 100%",
+          duration: 1,
+          repeat: 1,
+          yoyo: true,
+        },
+
+        0
+      );
+    const content_animation = gsap
+      .timeline()
+      .fromTo(
+        formRef.current,
+        { x: "100%" },
+        { x: "0%", ease: "Bounce.easeOut", duration: 2 }
+      );
+  }, []);
 
   return (
     <Page className="section-layout">
@@ -56,7 +151,7 @@ export const Register = () => {
               <Welcoming />
             </div>
           </div>
-          <div className="row form">
+          <div className="row form" ref={formRef}>
             <div className="top-control">
               <form onSubmit={handleSubmit}>
                 <h2 className="h2-bold">Sign up</h2>

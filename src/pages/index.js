@@ -6,6 +6,7 @@ import { UserSettings } from "./UserSettings";
 import { Login } from "./Login";
 import { Register } from "./Register";
 import { AllPostsPage } from "./AllPostsPage";
+import { MyPostsPage } from "./MyPostsPage";
 
 export {
   FrontPage,
@@ -16,4 +17,5 @@ export {
   Login,
   Register,
   AllPostsPage,
+  MyPostsPage,
 };
