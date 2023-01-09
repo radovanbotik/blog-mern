@@ -138,7 +138,11 @@ export const Notebook = () => {
         transform="translate(-154 -199.62501)"
         fill="#3f3d56"
       />
-      <g id="f2202155-5d0d-4949-a3af-453985752dd6" data-name="Group 23">
+      <g
+        id="f2202155-5d0d-4949-a3af-453985752dd6"
+        data-name="Group 23"
+        className="girl-right"
+      >
         <path
           id="bb56e1bb-a377-463a-b777-e3f2ac15f40f-301"
           data-name="Path 385"

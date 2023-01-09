@@ -1,11 +1,58 @@
-import React from "react";
+import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
 import { PostThumbnailGallery, Sidebar } from "../components";
-import { BlogScreen, Notebook } from "../assets/svgs";
+import { BlogScreen, GirlsAndNotebook, Notebook } from "../assets/svgs";
 import { useBlogData } from "../context/BlogContext";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
 
 export const FrontPage = () => {
+  // const svg = document.querySelector("svg #notebook");
+
+  useLayoutEffect(() => {
+    const girl_right_arm_left = document.querySelector(
+      "svg g #girl_right #arm_left"
+    );
+    const frame = document.querySelector("svg g #book #frame");
+    const stroke = document.querySelector("svg #pen_stroke_right");
+    const ponytail = document.querySelector("svg #girl_right #hair_tail");
+    console.log(ponytail);
+    gsap
+      .timeline()
+      .fromTo(
+        girl_right_arm_left,
+        {
+          rotate: "-45deg",
+          transformOrigin: "100% 50%",
+        },
+        {
+          duration: 1,
+          rotate: "0",
+        }
+      )
+      .fromTo(
+        ponytail,
+        {
+          rotate: "8deg",
+        },
+        {
+          duration: 1,
+          rotate: "0deg",
+          repeat: 1,
+          yoyo: true,
+        },
+        0
+      )
+      .fromTo(
+        stroke,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+        }
+      );
+  }, []);
   return (
     <Page className="section-layout">
       <Header2>
@@ -13,7 +60,7 @@ export const FrontPage = () => {
           <div className="row graphic hero reverse-order">
             <div className="top-control">
               {/* <BlogScreen /> */}
-              <Notebook />
+              <GirlsAndNotebook />
             </div>
           </div>
           <div className="row form reverse-order">

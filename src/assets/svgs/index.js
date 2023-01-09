@@ -7,6 +7,7 @@ import { PostAvatar } from "./PostAvatar";
 import { BlogScreen } from "./BlogScreen";
 import { Blob } from "./Blob";
 import { Notebook } from "./Notebook";
+import { GirlsAndNotebook } from "./GirlsAndNotebook";
 export {
   Welcoming,
   ImageUpload,
@@ -17,4 +18,5 @@ export {
   BlogScreen,
   Blob,
   Notebook,
+  GirlsAndNotebook,
 };
