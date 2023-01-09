@@ -5,6 +5,7 @@ import { CreatePost } from "./CreatePost";
 import { UserSettings } from "./UserSettings";
 import { Login } from "./Login";
 import { Register } from "./Register";
+import { AllPostsPage } from "./AllPostsPage";
 
 export {
   FrontPage,
@@ -14,4 +15,5 @@ export {
   UserSettings,
   Login,
   Register,
+  AllPostsPage,
 };

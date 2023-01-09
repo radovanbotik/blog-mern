@@ -44,8 +44,8 @@ const PostThumb = styled(Link)`
   flex-direction: column;
   justify-content: flex-start;
   gap: var(--vspace-3);
-
   svg {
+    background-color: white;
     border: 1px solid black;
     border-radius: 8px;
     height: 100%;

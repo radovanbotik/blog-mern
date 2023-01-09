@@ -43,28 +43,29 @@ export const Login = () => {
 
   return (
     <Page className="section-layout">
-      <div className="wrap">
-        <div className="row graphic">
-          <div className="top-control">
-            <LoginScreen />
+      <section>
+        <div className="wrap">
+          <div className="row graphic">
+            <div className="top-control">
+              <LoginScreen />
+            </div>
           </div>
-        </div>
-        <div className="row form">
-          <div className="top-control">
-            <form onSubmit={handleSubmit}>
-              <h2 className="h2-bold">Login</h2>
-              <fieldset>
-                <div className="panel">
-                  <label htmlFor="username">username</label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={userData.username}
-                    onChange={handleChange}
-                  />
-                </div>
-                {/* <div className="panel">
+          <div className="row form">
+            <div className="top-control">
+              <form onSubmit={handleSubmit}>
+                <h2 className="h2-bold">Login</h2>
+                <fieldset>
+                  <div className="panel">
+                    <label htmlFor="username">username</label>
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      value={userData.username}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  {/* <div className="panel">
                   <label htmlFor="email">email</label>
                   <input
                     type="email"
@@ -74,38 +75,39 @@ export const Login = () => {
                     onChange={handleChange}
                   />
                 </div> */}
-                <div className="panel">
-                  <label htmlFor="password">password</label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={userData.password}
-                    onChange={handleChange}
-                  />
-                </div>
-              </fieldset>
-              <fieldset>
-                <button
-                  className="user-submit"
-                  type="submit"
-                  disabled={globalState.pending}
-                >
-                  Sign in
-                </button>
-                <div>
-                  <span className="footnote_ts">Need an account? </span>
-                  <Link to="/register" className="footnote_ts underline">
-                    Sign up.
-                  </Link>
-                </div>
-              </fieldset>
-            </form>
+                  <div className="panel">
+                    <label htmlFor="password">password</label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      value={userData.password}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </fieldset>
+                <fieldset>
+                  <button
+                    className="user-submit"
+                    type="submit"
+                    disabled={globalState.pending}
+                  >
+                    Sign in
+                  </button>
+                  <div>
+                    <span className="footnote_ts">Need an account? </span>
+                    <Link to="/register" className="footnote_ts underline">
+                      Sign up.
+                    </Link>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </Page>
   );
 };
 
-const Page = styled.section``;
+const Page = styled.main``;

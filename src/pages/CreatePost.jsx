@@ -86,95 +86,97 @@ export const CreatePost = () => {
   return (
     <Page className="section-layout">
       {/* <h2 className="h2-bold section-title">Speak your mind</h2> */}
-      <div className="wrap">
-        <h2 className="h2-bold section-title">Speak your mind.</h2>
-        <div className="row graphic">
-          <div className="top-control">
-            {userInput.photo_path !== "" ? (
-              <img
-                src={URL.createObjectURL(photoRef.current.files[0])}
-                alt="image preview"
-              />
-            ) : (
-              <ImageUpload />
-            )}
-            {/* <div className="blob blob1">
+      <section>
+        <div className="wrap">
+          <h2 className="h2-bold section-title">Speak your mind.</h2>
+          <div className="row graphic">
+            <div className="top-control">
+              {userInput.photo_path !== "" ? (
+                <img
+                  src={URL.createObjectURL(photoRef.current.files[0])}
+                  alt="image preview"
+                />
+              ) : (
+                <ImageUpload />
+              )}
+              {/* <div className="blob blob1">
               <Blob />
             </div> */}
+            </div>
           </div>
-        </div>
-        <div className="row form">
-          <div className="top-control">
-            <form onSubmit={handleSubmit}>
-              {/* <h2 className="h2-bold">Speak your mind.</h2> */}
-              <h2 className="h2-bold">Let the world know</h2>
+          <div className="row form">
+            <div className="top-control">
+              <form onSubmit={handleSubmit}>
+                {/* <h2 className="h2-bold">Speak your mind.</h2> */}
+                <h2 className="h2-bold">Let the world know</h2>
 
-              <p>
-                Join the community of active writers.
-                <br /> Write, read and share your stories with ease.
-              </p>
-              {/* --TITLE--IMAGE--TITLE--IMAGE--TITLE--IMAGE--TITLE--IMAGE--TITLE--IMAGE */}
-              <fieldset className="user-inputs">
-                {/* <legend>Create a new post</legend> */}
-                <div className="panel">
-                  <label htmlFor="title">title</label>
-                  <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={userInput.title}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="panel file-input">
-                  <label htmlFor="fileinput" className="footnote_ts">
-                    <span>Attach an image</span>
-                    <span className="material-symbols-outlined">
-                      add_circle
-                    </span>
-                  </label>
-                  <input
-                    type="file"
-                    id="fileinput"
-                    style={{ display: "none" }}
-                    name="photo_path"
-                    value={userInput.photo_path}
-                    onChange={handleChange}
-                    accept="image/*"
-                    ref={photoRef}
-                  />
-                </div>
-              </fieldset>
-              {/* --STORY----STORY----STORY----STORY----STORY----STORY----STORY-- */}
-              <fieldset className="user-story">
-                <legend>The story</legend>
-                <div className="panel">
-                  <label htmlFor="story">
-                    <h6 className="endnote_ts">story</h6>
-                  </label>
-                  <textarea
-                    id="story"
-                    name="desc"
-                    value={userInput.desc}
-                    onChange={handleChange}
-                  ></textarea>
-                </div>
-              </fieldset>
-              <fieldset>
-                <button type="submit">publish</button>
-              </fieldset>
-            </form>
-            {/* <div className="blob blob2">
+                <p>
+                  Join the community of active writers.
+                  <br /> Write, read and share your stories with ease.
+                </p>
+                {/* --TITLE--IMAGE--TITLE--IMAGE--TITLE--IMAGE--TITLE--IMAGE--TITLE--IMAGE */}
+                <fieldset className="user-inputs">
+                  {/* <legend>Create a new post</legend> */}
+                  <div className="panel">
+                    <label htmlFor="title">title</label>
+                    <input
+                      type="text"
+                      id="title"
+                      name="title"
+                      value={userInput.title}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="panel file-input">
+                    <label htmlFor="fileinput" className="footnote_ts">
+                      <span>Attach an image</span>
+                      <span className="material-symbols-outlined">
+                        add_circle
+                      </span>
+                    </label>
+                    <input
+                      type="file"
+                      id="fileinput"
+                      style={{ display: "none" }}
+                      name="photo_path"
+                      value={userInput.photo_path}
+                      onChange={handleChange}
+                      accept="image/*"
+                      ref={photoRef}
+                    />
+                  </div>
+                </fieldset>
+                {/* --STORY----STORY----STORY----STORY----STORY----STORY----STORY-- */}
+                <fieldset className="user-story">
+                  <legend>The story</legend>
+                  <div className="panel">
+                    <label htmlFor="story">
+                      <h6 className="endnote_ts">story</h6>
+                    </label>
+                    <textarea
+                      id="story"
+                      name="desc"
+                      value={userInput.desc}
+                      onChange={handleChange}
+                    ></textarea>
+                  </div>
+                </fieldset>
+                <fieldset>
+                  <button type="submit">publish</button>
+                </fieldset>
+              </form>
+              {/* <div className="blob blob2">
               <Blob />
             </div> */}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </Page>
   );
 };
 
-const Page = styled.section`
+const Page = styled.main`
   /* background-color: gold; */
 
   .blob {

@@ -1,16 +1,10 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect } from "react";
 import styled from "styled-components";
-import {
-  FrontPageHeader,
-  PostThumbnailGallery,
-  Sidebar,
-  SpacerBottom,
-  SpacerTop,
-} from "../components";
+import { BlogScreen, GirlsAndNotebook, Notebook } from "../assets/svgs";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 
-export const FrontPage = () => {
-  const [isHovered, setIsHovered] = useState(false);
+export const FrontPageHeader = () => {
   useLayoutEffect(() => {
     const girl_right = document.querySelector("svg g #girl_right #arm_left");
     const girl_left = document.querySelector("svg g #girl_left #arm_right_2");
@@ -75,63 +69,48 @@ export const FrontPage = () => {
         },
         0
       );
-  }, [isHovered]);
+  }, []);
   return (
-    <Page className="section-layout">
-      <FrontPageHeader />
-      <SpacerBottom />
-      <SpacerTop />
-      <Previews>
-        <div className="wrap">
-          <h2 className="h2-bold title">Check out the most recent additions</h2>
+    <Header className="FrontPageHeader">
+      <div className="wrap">
+        <div className="row graphic hero reverse-order">
           <div className="top-control">
-            <div className="component-header">
-              <h5>from the community</h5>
-              <h5 className="endnote_ts">
-                Browse all
-                <span className="material-symbols-outlined icon">
-                  chevron_right
-                </span>
-              </h5>
-            </div>
-            <PostThumbnailGallery />
+            {/* <BlogScreen /> */}
+            <GirlsAndNotebook />
           </div>
         </div>
-      </Previews>
-    </Page>
+        <div className="row form reverse-order">
+          <div className="top-control">
+            <article className="scene-description">
+              <h1 className="h1-bold">Tell your story in seconds</h1>
+              <p>
+                Write and share your own stories with with people across the
+                globe. <br /> Try it, it's free.
+              </p>
+              <div className="button-container">
+                <Link to="/create-post" className="button-big dark">
+                  <span className="material-symbols-outlined">article</span>
+                  write a story
+                </Link>
+                <button className="button-big light">inspire yourself</button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </Header>
   );
 };
 
-const Page = styled.main``;
-
-const Previews = styled.section`
-  min-height: 100vh;
-  /* padding: 0em 1em; */
-  display: flex;
-  place-content: center;
-  flex-direction: column;
-  h2.title {
-    text-align: center;
-  }
-  @media (min-width: 660px) {
-    h2.title {
-      text-align: left;
-    }
-  }
-  .component-header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    h5:nth-child(2) {
-      color: #00000095;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      &:hover {
-        .icon {
-          transform: translate(2px);
-        }
-      }
-    }
-  }
+const Header = styled.section`
+  /* border: 1px solid black; */
+  /* height: calc(100vh - 80px - 2em - 90px); */
+  /* height: 100%; */
+  /* min-height: inherit; */
+  /* display: grid; */
+  /* place-content: center; */
+  position: relative;
+  /* svg {
+    max-height: 600px;
+  } */
 `;

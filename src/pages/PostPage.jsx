@@ -19,24 +19,26 @@ export const PostPage = () => {
   }, [id]);
   return (
     <Page className="section-layout">
-      <div className="wrap">
-        <h2 className="h2-bold section-title">The article</h2>
-        <div className="row graphic">
-          <div className="top-control">
-            {/* <Sidebar post={post} /> */}
-            <PostAvatar />
+      <section>
+        <div className="wrap">
+          <h2 className="h2-bold section-title">The article</h2>
+          <div className="row graphic">
+            <div className="top-control">
+              {/* <Sidebar post={post} /> */}
+              <PostAvatar />
+            </div>
+          </div>
+          <div className="row form">
+            <div className="top-control">
+              <FullPost post={post} />
+            </div>
           </div>
         </div>
-        <div className="row form">
-          <div className="top-control">
-            <FullPost post={post} />
-          </div>
-        </div>
-      </div>
+      </section>
     </Page>
   );
 };
 
-const Page = styled.section`
+const Page = styled.main`
   /* background-color: yellow; */
 `;

@@ -81,100 +81,102 @@ export const UserSettings = () => {
   return (
     <Page className="section-layout">
       {/* <h2 className="h2-bold section-title">Account settings</h2> */}
-      <div className="wrap">
-        <h2 className="h2-bold section-title">Account settings</h2>
-        <div className="row graphic">
-          <div className="top-control">
-            {/* <h2 className="h2-bold">Account settings</h2> */}
-            <ProfileDetails />
+      <section>
+        <div className="wrap">
+          <h2 className="h2-bold section-title">Account settings</h2>
+          <div className="row graphic">
+            <div className="top-control">
+              {/* <h2 className="h2-bold">Account settings</h2> */}
+              <ProfileDetails />
+            </div>
           </div>
-        </div>
-        <div className="row form">
-          <div className="top-control">
-            <form onSubmit={handleSubmit}>
-              <h2 className="h2-bold center">Your details</h2>
-              <fieldset className="user-picture">
-                <legend className="center">profile picture</legend>
-                <div className="panel">
-                  <div className="image-control center">
-                    {userSettings.photo ? (
-                      <img
-                        src={URL.createObjectURL(fileRef.current.files[0])}
-                        alt=""
-                      />
-                    ) : (
-                      <ProfileAvatar />
-                    )}
+          <div className="row form">
+            <div className="top-control">
+              <form onSubmit={handleSubmit}>
+                <h2 className="h2-bold center">Your details</h2>
+                <fieldset className="user-picture">
+                  <legend className="center">profile picture</legend>
+                  <div className="panel">
+                    <div className="image-control center">
+                      {userSettings.photo ? (
+                        <img
+                          src={URL.createObjectURL(fileRef.current.files[0])}
+                          alt=""
+                        />
+                      ) : (
+                        <ProfileAvatar />
+                      )}
+                    </div>
+                    <label htmlFor="profilePicture" className="center">
+                      <span className="material-symbols-outlined">image</span>
+                      <span>update your picture</span>
+                    </label>
+                    <input
+                      type="file"
+                      id="profilePicture"
+                      style={{ display: "none" }}
+                      name="photo"
+                      value={userSettings.photo}
+                      onChange={handleChange}
+                      ref={fileRef}
+                    />
                   </div>
-                  <label htmlFor="profilePicture" className="center">
-                    <span className="material-symbols-outlined">image</span>
-                    <span>update your picture</span>
-                  </label>
-                  <input
-                    type="file"
-                    id="profilePicture"
-                    style={{ display: "none" }}
-                    name="photo"
-                    value={userSettings.photo}
-                    onChange={handleChange}
-                    ref={fileRef}
-                  />
-                </div>
-              </fieldset>
-              <fieldset className="user-data">
-                <legend>account details</legend>
-                <div className="panel">
-                  <label htmlFor="username">
-                    <span> your username</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    value={userSettings.username}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="panel">
-                  <label htmlFor="email">
-                    <span>your email</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={userSettings.email}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="panel">
-                  <label htmlFor="password">
-                    <span>your password</span>
-                  </label>
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    value={userSettings.password}
-                    onChange={handleChange}
-                  />
-                </div>
-              </fieldset>
-              <fieldset>
-                <span className="footnote_ts">delete account</span>
-                <button type="submit" disabled={globalState.pending}>
-                  submit
-                </button>
-              </fieldset>
-            </form>
+                </fieldset>
+                <fieldset className="user-data">
+                  <legend>account details</legend>
+                  <div className="panel">
+                    <label htmlFor="username">
+                      <span> your username</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      value={userSettings.username}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="panel">
+                    <label htmlFor="email">
+                      <span>your email</span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={userSettings.email}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="panel">
+                    <label htmlFor="password">
+                      <span>your password</span>
+                    </label>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      value={userSettings.password}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </fieldset>
+                <fieldset>
+                  <span className="footnote_ts">delete account</span>
+                  <button type="submit" disabled={globalState.pending}>
+                    submit
+                  </button>
+                </fieldset>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </Page>
   );
 };
 
-const Page = styled.section`
+const Page = styled.main`
   .blob {
     position: absolute;
   }

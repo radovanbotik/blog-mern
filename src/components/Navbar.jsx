@@ -9,6 +9,7 @@ export const Navbar = () => {
     globalState: { user },
     handleLogout,
   } = useBlogData();
+  let vh = window.innerHeight * 0.01;
   return (
     <Navigation>
       <div className="top-control">
@@ -17,10 +18,19 @@ export const Navbar = () => {
         </Link>
         {user && (
           <ul className="horizontal user-in">
-            <li>
+            {/* <li>
               <Link to="/" className="link-button">
                 <span>home</span>
                 <span className="material-symbols-outlined icon">home</span>
+              </Link>
+            </li> */}
+
+            <li>
+              <Link to="/create-post" className="link-button">
+                <span>write</span>
+                <span className="material-symbols-outlined icon">
+                  edit_note
+                </span>
               </Link>
             </li>
             <li>
@@ -28,14 +38,6 @@ export const Navbar = () => {
                 <span>profile</span>
                 <span className="material-symbols-outlined icon">
                   account_circle
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/create-post" className="link-button">
-                <span>write</span>
-                <span className="material-symbols-outlined icon">
-                  edit_note
                 </span>
               </Link>
             </li>
@@ -90,9 +92,14 @@ const Navigation = styled.nav`
   width: 100%;
   top: 0;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  margin-bottom: 2em;
+  max-width: calc(25 * var(--vspace-0));
+  margin: 0 auto;
+  margin: 0 auto 2em;
   .top-control {
+    height: 100%;
+    min-height: inherit;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -100,8 +107,8 @@ const Navigation = styled.nav`
     .logo {
       display: block;
       display: grid;
-      h3 {
-        margin: 0;
+      h2 {
+        text-decoration: underline solid 3px black;
       }
     }
     ul.horizontal {

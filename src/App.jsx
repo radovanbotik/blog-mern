@@ -12,6 +12,7 @@ import {
   UserSettings,
   Login,
   Register,
+  AllPostsPage,
 } from "./pages";
 import { useBlogData } from "./context/BlogContext";
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="post/:id" element={<PostPage />} />
         <Route path="user" element={user ? <UserSettings /> : <Register />} />
         <Route path="register" element={<Register />} />
+        <Route path="posts" element={<AllPostsPage />} />
       </Route>
     )
   );
