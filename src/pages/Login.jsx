@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { LoginScreen } from "../assets/svgs";
 import { useBlogData } from "../context/BlogContext";
+import gsap from "gsap";
 import axios from "axios";
 
 export const Login = () => {
@@ -13,6 +14,7 @@ export const Login = () => {
     email: "",
     password: "",
   });
+  const formRef = useRef();
 
   ///Fetch Logic
   const fetchData = async () => {
@@ -41,6 +43,46 @@ export const Login = () => {
     }
   };
 
+  useLayoutEffect(() => {
+    const animation = gsap
+      .timeline()
+      .fromTo(
+        "#arm_left",
+        {
+          rotate: "-20deg",
+          transformOrigin: "100% 0%",
+          duration: 1,
+        },
+        {
+          rotate: "0deg",
+        }
+      )
+      .fromTo(
+        "#arm_right",
+        {
+          x: "-2px",
+          duration: 2,
+        },
+        {
+          x: 0,
+        }
+      )
+      .fromTo(
+        "#room",
+        { fill: "white" },
+        { fill: "black", duration: 1, ease: "Power2.easeOut" }
+      )
+      .fromTo("#window_frame", { fill: "white" }, { fill: "grey" }, "<");
+
+    const content_animation = gsap
+      .timeline()
+      .fromTo(
+        formRef.current,
+        { x: "10%" },
+        { x: "0%", ease: "Bounce.easeOut", duration: 2 }
+      );
+  }, []);
+
   return (
     <Page className="section-layout">
       <section>
@@ -50,7 +92,7 @@ export const Login = () => {
               <LoginScreen />
             </div>
           </div>
-          <div className="row form">
+          <div className="row form" ref={formRef}>
             <div className="top-control">
               <form onSubmit={handleSubmit}>
                 <h2 className="h2-bold">Login</h2>

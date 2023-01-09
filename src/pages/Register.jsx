@@ -71,7 +71,8 @@ export const Register = () => {
           stagger: 0.2,
           ease: "Power1.easeOut",
           duration: 1,
-        }
+        },
+        1
       )
       .fromTo(
         dots_right,
@@ -109,15 +110,14 @@ export const Register = () => {
       )
       .fromTo(
         "#whole_body",
-        { y: "5px", transformOrigin: "0% 100%" },
+
+        { y: "0px", transformOrigin: "0% 100%", ease: "back" },
         {
-          y: "0px",
-          duration: 1,
-          repeat: 2,
+          y: "10px",
+          repeat: 1,
           yoyo: true,
-          repeatDelay: 0.2,
+          repeatDelay: 0.5,
           ease: "back",
-          duration: 1,
         },
         0
       )
@@ -126,7 +126,8 @@ export const Register = () => {
         {
           rotate: "5deg",
           transformOrigin: "50% 100%",
-          duration: 1,
+          duration: 2,
+          repeatDelay: 1,
           repeat: 1,
           yoyo: true,
         },
@@ -137,7 +138,7 @@ export const Register = () => {
       .timeline()
       .fromTo(
         formRef.current,
-        { x: "100%" },
+        { x: "10%" },
         { x: "0%", ease: "Bounce.easeOut", duration: 2 }
       );
   }, []);

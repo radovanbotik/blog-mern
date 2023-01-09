@@ -71,37 +71,80 @@ export const FullPost = ({ post }) => {
       desc: desc,
     });
   }, [post]);
+
+  //Text Area Resizing
+  useLayoutEffect(() => {
+    const txHeight = 160;
+    const tx = document.getElementsByTagName("textarea");
+
+    for (let i = 0; i < tx.length; i++) {
+      if (tx[i].value == "") {
+        tx[i].setAttribute(
+          "style",
+          "height:" + txHeight + "px;overflow-y:hidden;"
+        );
+      } else {
+        tx[i].setAttribute(
+          "style",
+          "height:" + tx[i].scrollHeight + "px;overflow-y:hidden;"
+        );
+      }
+      tx[i].addEventListener("input", OnInput, false);
+    }
+
+    function OnInput(e) {
+      this.style.height = "auto";
+      this.style.height = this.scrollHeight + "px";
+    }
+  }, [updatedValues.desc]);
   return (
     <Article>
-      <div className="article-title">
-        {flagForUpdate && (
-          <input
-            type="text"
-            name="title"
-            value={updatedValues.title}
-            onChange={handleChange}
-            autoFocus={true}
-          ></input>
-        )}
-        {!flagForUpdate && <h2 className="resize">{title}</h2>}
-        {/* <Link to={`/?user=${username}`}>author</Link> */}
-        <p>
-          <span className="endnote_ts">by</span>
-          <span className="capitalize-name">
-            {" "}
-            {username === user.username ? "you" : username}
-          </span>
-        </p>
-      </div>
+      {flagForUpdate ? (
+        <div className="article-title">
+          <h2 className="resize">Edit mode</h2>
+          <fieldset className="user-inputs">
+            <div className="panel">
+              <label htmlFor="title">New title:</label>
+              <input
+                id="title"
+                type="text"
+                name="title"
+                value={updatedValues.title}
+                onChange={handleChange}
+                autoFocus={true}
+              ></input>
+            </div>
+          </fieldset>
+        </div>
+      ) : (
+        <div className="article-title">
+          <h2 className="resize">{title}</h2>
+          <p>
+            <span className="endnote_ts">by</span>
+            <span className="capitalize-name">
+              {" "}
+              {username === user.username ? "you" : username}
+            </span>
+          </p>
+        </div>
+      )}
 
       <div className="article-body">
         {flagForUpdate ? (
-          <textarea
-            type="text"
-            name="desc"
-            value={updatedValues.desc}
-            onChange={handleChange}
-          ></textarea>
+          <fieldset className="user-story">
+            <div className="panel">
+              <label htmlFor="story">
+                <h6 className="endnote_ts">Edit your message:</h6>
+              </label>
+              <textarea
+                id="story"
+                type="text"
+                name="desc"
+                value={updatedValues.desc}
+                onChange={handleChange}
+              ></textarea>
+            </div>
+          </fieldset>
         ) : (
           <div className="content">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
@@ -182,6 +225,7 @@ const Article = styled.article`
   padding: 1em 2em;
   .article-title {
     display: flex;
+    flex-direction: column;
     align-items: baseline;
     gap: 1ex;
   }

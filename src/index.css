@@ -523,6 +523,7 @@ fieldset .panel textarea {
   text-indent: 0.5ex;
   min-height: 100px;
   margin: 8px 0px;
+  max-height: 400px;
 }
 fieldset:last-child {
   border: 0;
