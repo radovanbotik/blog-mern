@@ -22,6 +22,7 @@ export const UserSettings = () => {
     photo: "",
   });
   const [uploadSuccess, setUploadSuccess] = useState(false);
+  const publicFolder = "http://localhost:5000/images/";
 
   //Fetch Logic
   const uploadNewCredentials = async settings => {
@@ -86,8 +87,11 @@ export const UserSettings = () => {
           <h2 className="h2-bold section-title">Account settings</h2>
           <div className="row graphic">
             <div className="top-control">
-              {/* <h2 className="h2-bold">Account settings</h2> */}
-              <ProfileDetails />
+              {user.profilePicture ? (
+                <img src={publicFolder + user.profilePicture} />
+              ) : (
+                <ProfileDetails />
+              )}
             </div>
           </div>
           <div className="row form">
@@ -177,7 +181,7 @@ export const UserSettings = () => {
 };
 
 const Page = styled.main`
-  .blob {
-    position: absolute;
+  .row.graphic .top-control img {
+    clip-path: circle();
   }
 `;

@@ -198,10 +198,7 @@ export const FullPost = ({ post }) => {
                 </button>
               )}
               {flagForUpdate && (
-                <button
-                  className="option"
-                  onClick={() => setFlagForUpdate(false)}
-                >
+                <button className="option" onClick={discardEdit}>
                   <span className="material-symbols-outlined icon">
                     backspace
                   </span>
@@ -218,7 +215,8 @@ export const FullPost = ({ post }) => {
 
 const Article = styled.article`
   width: inherit;
-  background-color: #d4dba6;
+  /* background-color: #d4dba6; */
+
   display: flex;
   flex-direction: column;
   gap: var(--vspace-3);

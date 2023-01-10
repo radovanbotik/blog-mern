@@ -9,7 +9,10 @@ export const Navbar = () => {
     globalState: { user },
     handleLogout,
   } = useBlogData();
+  console.log(user);
   let vh = window.innerHeight * 0.01;
+  const publicFolder = "http://localhost:5000/images/";
+
   return (
     <Navigation>
       <div className="top-control">
@@ -53,8 +56,11 @@ export const Navbar = () => {
               <li>
                 <Link>
                   <div className="profile-avatar">
-                    {user?.profilePicture !== "" ? (
-                      <img src={user.profilePicture} alt="profile picture" />
+                    {user.profilePicture !== "" ? (
+                      <img
+                        src={publicFolder + user.profilePicture}
+                        alt="profile picture"
+                      />
                     ) : (
                       <ProfileAvatar />
                     )}
@@ -104,11 +110,14 @@ const Navigation = styled.nav`
     flex-direction: column;
     flex-wrap: wrap;
     gap: var(--vspace-3);
+    border-bottom: 2px solid var(--primary-2);
+
     .logo {
       display: block;
       display: grid;
       h2 {
-        text-decoration: underline solid 3px black;
+        text-decoration: underline solid 3px var(--accent-3);
+        color: var(--primary-3);
       }
     }
     ul.horizontal {
@@ -118,9 +127,10 @@ const Navigation = styled.nav`
       li {
         .profile-avatar {
           border-radius: 50%;
-          border: 1px solid black;
+          border: 1px solid var(--primary-2);
           height: 32px;
           width: 32px;
+          overflow: hidden;
           img {
             height: 100%;
             width: 100%;
