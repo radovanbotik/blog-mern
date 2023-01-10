@@ -88,10 +88,10 @@ export const FrontPageHeader = () => {
                 globe. <br /> Try it, it's free.
               </p>
               <div className="button-container">
-                <Link to="/create-post" className="button-big dark">
+                <button className="button-big dark">
                   <span className="material-symbols-outlined">article</span>
                   write a story
-                </Link>
+                </button>
                 <button className="button-big light">inspire yourself</button>
               </div>
             </article>
@@ -110,6 +110,10 @@ const Header = styled.section`
   /* display: grid; */
   /* place-content: center; */
   position: relative;
+  display: grid;
+  max-width: 100%;
+  margin: 0;
+  /* place-content: center; */
   /* svg {
     max-height: 600px;
   } */

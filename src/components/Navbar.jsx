@@ -15,10 +15,10 @@ export const Navbar = () => {
 
   return (
     <Navigation>
-      <Link to="/" className="logo">
+      {/* <Link to="/" className="logo">
         <h4>blog.</h4>
-      </Link>
-      {/* {user && (
+      </Link> */}
+      {user && (
         <ul className="link-list user-in">
           <li>
             <Link to="/" className="logo">
@@ -36,7 +36,7 @@ export const Navbar = () => {
             </Link>
           </li>
         </ul>
-      )} */}
+      )}
       {/* {user && (
         <ul className="link-list user-in">
           <li>
@@ -87,12 +87,13 @@ const Navigation = styled.nav`
   min-height: 56px;
   width: 100%;
   max-width: calc(25 * var(--vspace-0));
-  margin: 1em auto 0em;
-  border-top: 24px solid var(--primary-2);
-  /* border-bottom: 24px solid var(--primary-2); */
+  margin: 0 auto;
+  /* border-top: 24px solid var(--primary-2); */
   /* padding: 0em 2em; */
   display: flex;
   justify-content: space-between;
+
+  padding: 90px 2em 0;
 
   /* flex-direction: column; */
   /* flex-wrap: wrap; */
@@ -102,16 +103,17 @@ const Navigation = styled.nav`
     /* padding-right: 24px; */
     display: flex;
     align-items: end;
-    align-items: center;
+    position: relative;
     h4 {
       font-size: var(--size-700);
-      /* line-height: 1.2em; */
       text-transform: none;
+      line-height: 1;
     }
     h4:first-letter {
       /* color: red; */
       font-size: var(--size-700);
       font-family: var(--sofia);
+      line-height: 0;
     }
   }
   ul.link-list {
@@ -121,7 +123,6 @@ const Navigation = styled.nav`
     min-height: inherit;
     gap: 4ex;
     li {
-      line-height: 1.2em;
       /* display: flex; */
       align-items: end;
       align-items: center;
@@ -155,6 +156,11 @@ const Navigation = styled.nav`
     }
     ul.link-list {
       align-self: flex-end;
+    }
+  }
+  @media (min-width: 1640px) {
+    & {
+      padding: 90px 0 0;
     }
   }
 `;

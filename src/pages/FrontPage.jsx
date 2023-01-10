@@ -78,10 +78,13 @@ export const FrontPage = () => {
   }, [isHovered]);
   return (
     <Page className="section-layout">
-      <FrontPageHeader />
+      <div className="flex">
+        <FrontPageHeader />
+        <div className="modal">asdasdas</div>
+      </div>
       <SpacerBottom />
-      <SpacerTop />
-      <Previews>
+      {/* <SpacerTop /> */}
+      {/* <Previews>
         <div className="wrap">
           <h2 className="h2-bold title">Check out the most recent additions</h2>
           <div className="top-control">
@@ -97,12 +100,39 @@ export const FrontPage = () => {
             <PostThumbnailGallery />
           </div>
         </div>
-      </Previews>
+      </Previews> */}
     </Page>
   );
 };
 
-const Page = styled.main``;
+const Page = styled.main`
+  position: relative;
+
+  .flex {
+    padding: 0 2em;
+    max-width: calc(25 * var(--vspace-0));
+    margin: 0 auto;
+    min-height: inherit;
+    /* height: 100%; */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-content: flex-start;
+    align-content: flex-start;
+  }
+
+  @media (min-width: 600px) {
+    .flex {
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr;
+    }
+  }
+  @media (min-width: 1640px) {
+    .flex {
+      padding: 0;
+    }
+  }
+`;
 
 const Previews = styled.section`
   min-height: 100vh;
