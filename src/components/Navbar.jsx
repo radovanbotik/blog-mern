@@ -15,158 +15,146 @@ export const Navbar = () => {
 
   return (
     <Navigation>
-      <div className="top-control">
-        <Link to="/" className="logo">
-          <h2 className="h2-bold">blog.</h2>
-        </Link>
-        {user && (
-          <ul className="horizontal user-in">
-            {/* <li>
-              <Link to="/" className="link-button">
-                <span>home</span>
-                <span className="material-symbols-outlined icon">home</span>
-              </Link>
-            </li> */}
-
-            <li>
-              <Link to="/create-post" className="link-button">
-                <span>write</span>
-                <span className="material-symbols-outlined icon">
-                  edit_note
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/user" className="link-button">
-                <span>profile</span>
-                <span className="material-symbols-outlined icon">
-                  account_circle
-                </span>
-              </Link>
-            </li>
-            {user && (
-              <li onClick={handleLogout}>
-                <Link className="link-button">
-                  <span>log out</span>
-                  <span className="material-symbols-outlined icon">login</span>
-                </Link>
-              </li>
-            )}
-            {user && (
-              <li>
-                <Link>
-                  <div className="profile-avatar">
-                    {user.profilePicture !== "" ? (
-                      <img
-                        src={publicFolder + user.profilePicture}
-                        alt="profile picture"
-                      />
-                    ) : (
-                      <ProfileAvatar />
-                    )}
-                  </div>
-                </Link>
-              </li>
-            )}
-          </ul>
-        )}
-        {!user && (
-          <ul className="horizontal user-out">
-            <li>
-              <Link to="/login" className="link-button">
-                <span>login</span>
-                <span className="material-symbols-outlined icon">login</span>
-              </Link>
-            </li>
-            <li>
-              <Link to="/register" className="link-button">
-                <span>register</span>
-                <span className="material-symbols-outlined">
-                  volunteer_activism
-                </span>
-              </Link>
-            </li>
-          </ul>
-        )}
-      </div>
+      <Link to="/" className="logo">
+        <h4>blog.</h4>
+      </Link>
+      {/* {user && (
+        <ul className="link-list user-in">
+          <li>
+            <Link to="/" className="logo">
+              <h4>blog.</h4>
+            </Link>
+          </li>
+          <li>
+            <Link to="/create-post" className="link">
+              <span>write</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/user" className="link">
+              <span>profile</span>
+            </Link>
+          </li>
+        </ul>
+      )} */}
+      {/* {user && (
+        <ul className="link-list user-in">
+          <li>
+            <Link>
+              <div className="profile-avatar">
+                {user.profilePicture !== "" ? (
+                  <img
+                    src={publicFolder + user.profilePicture}
+                    alt="profile picture"
+                  />
+                ) : (
+                  <ProfileAvatar />
+                )}
+              </div>
+            </Link>
+          </li>
+          <li onClick={handleLogout}>
+            <Link className="link">
+              <span>log out</span>
+              <span className="material-symbols-outlined icon">login</span>
+            </Link>
+          </li>
+        </ul>
+      )}
+      {!user && (
+        <ul className="user-out">
+          <li>
+            <Link to="/login" className="link-button">
+              <span>login</span>
+              <span className="material-symbols-outlined icon">login</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/register" className="link-button">
+              <span>register</span>
+              <span className="material-symbols-outlined">
+                volunteer_activism
+              </span>
+            </Link>
+          </li>
+        </ul>
+      )} */}
     </Navigation>
   );
 };
 
 const Navigation = styled.nav`
-  min-height: 80px;
+  min-height: 56px;
   width: 100%;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
   max-width: calc(25 * var(--vspace-0));
-  margin: 0 auto;
-  margin: 0 auto 2em;
-  .top-control {
-    height: 100%;
-    min-height: inherit;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: var(--vspace-3);
-    border-bottom: 2px solid var(--primary-2);
+  margin: 1em auto 0em;
+  border-top: 24px solid var(--primary-2);
+  /* border-bottom: 24px solid var(--primary-2); */
+  /* padding: 0em 2em; */
+  display: flex;
+  justify-content: space-between;
 
-    .logo {
-      display: block;
-      display: grid;
-      h2 {
-        text-decoration: underline solid 3px var(--accent-3);
-        color: var(--primary-3);
-      }
+  /* flex-direction: column; */
+  /* flex-wrap: wrap; */
+  /* gap: var(--vspace-0); */
+
+  a.logo {
+    /* padding-right: 24px; */
+    display: flex;
+    align-items: end;
+    align-items: center;
+    h4 {
+      font-size: var(--size-700);
+      /* line-height: 1.2em; */
+      text-transform: none;
     }
-    ul.horizontal {
-      float: left;
+    h4:first-letter {
+      /* color: red; */
+      font-size: var(--size-700);
+      font-family: var(--sofia);
+    }
+  }
+  ul.link-list {
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    min-height: inherit;
+    gap: 4ex;
+    li {
+      line-height: 1.2em;
+      /* display: flex; */
+      align-items: end;
       align-items: center;
-      gap: 1ex;
-      li {
-        .profile-avatar {
-          border-radius: 50%;
-          border: 1px solid var(--primary-2);
-          height: 32px;
-          width: 32px;
-          overflow: hidden;
-          img {
-            height: 100%;
-            width: 100%;
-          }
-          svg {
-            height: 100%;
-            width: 100%;
-          }
-        }
-      }
-      li:hover {
-        .icon {
-          font-variation-settings: "FILL" 1;
-        }
-      }
-      li:active {
-        .icon {
-          font-variation-settings: "FILL" 1, "wght" 300;
-        }
-      }
+    }
+  }
+  /* ul.link-list.user-in:nth-of-type(1) {
+      margin-right: auto;
+    } */
+  .profile-avatar {
+    border-radius: 50%;
+    border: 1px solid var(--primary-2);
+    height: 32px;
+    width: 32px;
+    overflow: hidden;
+    margin-bottom: 0.1em;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+    svg {
+      height: 100%;
+      width: 100%;
     }
   }
   @media (min-width: 600px) {
-    .top-control {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      .logo {
-        h1 {
-          font-size: var(--size-700);
-        }
-      }
-      ul.horizontal {
-        flex-direction: row;
-        float: right;
-      }
+    flex-direction: row;
+    a.logo {
+      display: flex;
+      align-items: flex-end;
+    }
+    ul.link-list {
+      align-self: flex-end;
     }
   }
 `;
